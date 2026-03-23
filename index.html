@@ -48,21 +48,22 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 8px; border-bottom: 1px solid #e2e8f0; }
         .qty-control { display: flex; gap: 8px; align-items: center; }
         .qty-control button { background: #e2e8f0; border: none; width: 28px; height: 28px; border-radius: 30px; cursor: pointer; }
-        .payment-buttons { display: flex; gap: 12px; margin: 1rem 0; }
-        .payment-btn { flex: 1; padding: 12px; border: none; border-radius: 60px; font-weight: bold; cursor: pointer; }
-        .kpay { background: #009e60; color: white; }
-        .wave { background: #f4a261; color: white; }
+        .payment-methods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; margin: 10px 0; }
+        .payment-option { background: #f1f5f9; padding: 8px; border-radius: 40px; text-align: center; cursor: pointer; font-size: 0.75rem; }
+        .payment-option.selected { background: #1e3c2c; color: white; }
         .order-form input, .order-form textarea, .order-form select { width: 100%; padding: 10px; margin: 8px 0; border-radius: 16px; border: 1px solid #cbd5e1; }
         footer { background: #0f2a1d; color: #cbd5e1; text-align: center; padding: 1.5rem; margin-top: 2rem; font-size: 0.8rem; }
         .toast-msg { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e3c2c; color: white; padding: 10px 20px; border-radius: 40px; z-index: 1100; font-size: 0.8rem; }
         .status-pending { background: #fef3c7; color: #b45309; padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
         .status-confirmed { background: #d1fae5; color: #065f46; padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
         .status-completed { background: #dbeafe; color: #1e40af; padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
+        .status-cancelled { background: #fee2e2; color: #991b1b; padding: 4px 8px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
         .order-card { background: #f8fafc; border-radius: 16px; padding: 12px; margin-bottom: 12px; }
         .screenshot-img { max-width: 100%; max-height: 150px; border-radius: 12px; margin-top: 8px; border: 1px solid #e2e8f0; }
         .upload-area { border: 2px dashed #cbd5e1; border-radius: 16px; padding: 15px; text-align: center; margin-top: 10px; cursor: pointer; background: #f8fafc; }
         .copy-phone { background: #e2e8f0; padding: 8px 12px; border-radius: 40px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; margin: 5px 0; }
         .stat-card { background: #eef2ff; padding: 10px; border-radius: 16px; margin-bottom: 12px; text-align: center; }
+        .delivery-fee-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #f1f5f9; margin: 5px 0; border-radius: 12px; }
         @media (max-width: 760px) { .sidebar { width: 100%; position: static; } .container { flex-direction: column; } }
     </style>
 </head>
@@ -107,7 +108,7 @@
     </div>
 </div>
 
-<!-- Cart Modal -->
+<!-- Cart Modal with Screenshot Upload -->
 <div class="cart-modal" id="cartModal">
     <div style="display:flex; justify-content:space-between;"><h3><i class="fas fa-shopping-bag"></i> ခြင်းတောင်း</h3><button id="closeCartBtn" style="background:none; border:none; font-size:1.2rem;"><i class="fas fa-times"></i></button></div>
     <div class="cart-items" id="cartItemsList"></div>
@@ -116,10 +117,20 @@
         <input type="text" id="customerName" placeholder="နာမည် *">
         <input type="text" id="customerPhone" placeholder="ဖုန်းနံပါတ် *">
         <input type="text" id="customerAddress" placeholder="လိပ်စာ *">
-        <select id="deliveryCity"><option value="yangon">ရန်ကုန်မြို့အတွင်း (ပို့ဆောင်ခ ၂၀၀၀ကျပ်)</option><option value="other">အခြားမြို့ (ပို့ဆောင်ခ ၅၀၀၀ကျပ်)</option></select>
+        <select id="deliveryCity" class="delivery-select"></select>
         <textarea id="orderNote" rows="2" placeholder="မှတ်ချက်"></textarea>
+        
+        <!-- Screenshot Upload (တစ်ခါတည်း) -->
+        <div class="upload-area" id="screenshotUploadArea" style="margin-top: 15px;">
+            <i class="fas fa-camera"></i> ငွေသွင်းပြေစာ Screenshot တင်ရန် (လိုအပ်ပါက)
+            <input type="file" id="orderScreenshot" accept="image/*" style="display: none;">
+        </div>
+        <div id="screenshotPreview" style="margin-top: 8px;"></div>
+        
+        <!-- Payment Methods -->
+        <div class="payment-methods-grid" id="paymentMethodsGrid"></div>
     </div>
-    <div class="payment-buttons"><button class="payment-btn kpay" id="kpayBtn"><i class="fas fa-mobile-alt"></i> KBZ Pay</button><button class="payment-btn wave" id="waveBtn"><i class="fas fa-money-bill-wave"></i> Wave Money</button></div>
+    <button id="placeOrderBtn" style="width:100%; padding:14px; background:#1e3c2c; color:white; border:none; border-radius:60px; font-weight:bold; margin-top:10px;">✅ အော်ဒါတင်မည်</button>
 </div>
 
 <!-- Admin Modal -->
@@ -127,6 +138,16 @@
     <div class="modal-content" style="max-width:700px;">
         <h3><i class="fas fa-user-cog"></i> Admin Panel</h3>
         <div id="adminStats" class="stat-card"></div>
+        
+        <h4>📦 ပို့ဆောင်ခ သတ်မှတ်ချက်များ</h4>
+        <div id="deliveryFeesList"></div>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+            <input type="text" id="newCityName" placeholder="မြို့အမည်" style="flex:1; padding:6px; border-radius:20px;">
+            <input type="number" id="newCityFee" placeholder="ပို့ဆောင်ခ" style="width:100px; padding:6px; border-radius:20px;">
+            <button id="addDeliveryFeeBtn" style="background:#1e3c2c; color:white; border:none; border-radius:20px; padding:6px 12px;">+ ထည့်</button>
+        </div>
+        
+        <hr style="margin: 15px 0;">
         <div id="adminOrdersList" style="max-height:400px; overflow-y:auto;"></div>
         <hr>
         <h4>ပစ္စည်းအသစ်ထည့်ရန်</h4>
@@ -150,7 +171,7 @@
 </div>
 
 <div id="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; display:none;"></div>
-<footer><p>© 2025 ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင် | ငွေသွင်းပြေစာ တင်နိုင်ခြင်း၊ အော်ဒါအခြေအနေ Real-time</p></footer>
+<footer><p>© 2025 ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင် | ငွေသွင်းပြေစာ တစ်ခါတည်းတင်နိုင်ခြင်း</p></footer>
 
 <script>
     // ---------- PRODUCTS ----------
@@ -169,15 +190,42 @@
     let customers = JSON.parse(localStorage.getItem("banyar_customers")) || [];
     let currentUser = JSON.parse(localStorage.getItem("banyar_current_user")) || null;
     
+    // Delivery Fees (Admin can edit)
+    let deliveryFees = JSON.parse(localStorage.getItem("banyar_delivery_fees")) || {
+        "ရန်ကုန်မြို့အတွင်း": 2000,
+        "မန္တလေးမြို့": 3000,
+        "နေပြည်တော်": 3500,
+        "အခြားမြို့": 5000
+    };
+    
+    // Payment Methods
+    let paymentMethods = [
+        { id: "kpay", name: "KBZ Pay", phone: "09752949393", icon: "fas fa-mobile-alt", color: "#009e60" },
+        { id: "wave", name: "Wave Pay", phone: "09685818193", icon: "fas fa-money-bill-wave", color: "#f4a261" },
+        { id: "ayapay", name: "AYA Pay", phone: "09444444444", icon: "fas fa-building", color: "#d32f2f" },
+        { id: "cbpay", name: "CB Pay", phone: "09555555555", icon: "fas fa-university", color: "#1976d2" },
+        { id: "uabpay", name: "UAB Pay", phone: "09666666666", icon: "fas fa-piggy-bank", color: "#388e3c" },
+        { id: "mpu", name: "MPU Card", phone: "", icon: "fas fa-credit-card", color: "#7b1fa2" },
+        { id: "yomapay", name: "Yoma Pay", phone: "09777777777", icon: "fas fa-leaf", color: "#f57c00" },
+        { id: "okdollar", name: "OK Dollar", phone: "09888888888", icon: "fas fa-dollar-sign", color: "#0288d1" },
+        { id: "mpt", name: "MPT", phone: "", icon: "fas fa-tower-cell", color: "#455a64" },
+        { id: "ooredoo", name: "Ooredoo", phone: "", icon: "fas fa-wifi", color: "#e65100" },
+        { id: "telenor", name: "Telenor", phone: "", icon: "fas fa-broadcast-tower", color: "#c2185b" },
+        { id: "onepay", name: "1Bill", phone: "", icon: "fas fa-file-invoice", color: "#5d4037" },
+        { id: "twoc2p", name: "2C2P", phone: "", icon: "fas fa-exchange-alt", color: "#009688" }
+    ];
+    let selectedPayment = paymentMethods[0];
+    let orderScreenshotData = null;
+    
     function saveOrders() { localStorage.setItem("banyar_orders", JSON.stringify(orders)); }
     function saveCustomers() { localStorage.setItem("banyar_customers", JSON.stringify(customers)); }
     function saveCurrentUser() { localStorage.setItem("banyar_current_user", JSON.stringify(currentUser)); }
     function saveProducts() { localStorage.setItem("banyar_products", JSON.stringify(products)); }
+    function saveDeliveryFees() { localStorage.setItem("banyar_delivery_fees", JSON.stringify(deliveryFees)); }
     if(localStorage.getItem("banyar_products")) products = JSON.parse(localStorage.getItem("banyar_products"));
     
     let categories = [...new Set(products.map(p => p.category))];
     
-    // Update UI based on login status
     function updateUserUI() {
         let userArea = document.getElementById("userArea");
         if(currentUser) {
@@ -228,7 +276,6 @@
         showToast("ထွက်ရန် အောင်မြင်ပါသည်");
     }
     
-    // Show only current user's orders with real-time status
     function showMyOrders() {
         if(!currentUser) { alert("ကျေးဇူးပြု၍ အကောင့်ဝင်ပါ"); return; }
         let userOrders = orders.filter(o => o.customerPhone === currentUser.phone);
@@ -238,20 +285,17 @@
         } else {
             let html = "";
             userOrders.forEach(order => {
-                let statusClass = order.status === "pending" ? "status-pending" : (order.status === "confirmed" ? "status-confirmed" : "status-completed");
-                let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : "✔️ ပြီးစီး");
+                let statusClass = order.status === "pending" ? "status-pending" : (order.status === "confirmed" ? "status-confirmed" : (order.status === "completed" ? "status-completed" : "status-cancelled"));
+                let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : (order.status === "completed" ? "✔️ ပြီးစီး" : "❌ ပယ်ဖျက်ထား"));
                 html += `
                     <div class="order-card">
                         <div><strong>📦 ${order.id}</strong> <span class="${statusClass}">${statusText}</span></div>
                         <div><small>${order.date}</small></div>
-                        <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentMethod === "kpay" ? "KBZ Pay" : "Wave Money"})</div>
+                        <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div>
+                        <div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div>
                         <div>📝 ${order.note || "မှတ်ချက်မရှိ"}</div>
                         <div><strong>ပစ္စည်းများ:</strong><br>${order.items.map(i => `• ${i.name} x${i.quantity} = ${(i.price * i.quantity).toLocaleString()}ကျပ်`).join("<br>")}</div>
-                        ${order.paymentScreenshot ? `<div><img src="${order.paymentScreenshot}" class="screenshot-img" alt="payment slip"></div>` : `
-                        <div class="upload-area" onclick="uploadScreenshot('${order.id}')">
-                            <i class="fas fa-cloud-upload-alt"></i> ငွေသွင်းပြေစာ Screenshot တင်ရန် (Gallery မှာ)
-                        </div>
-                        `}
+                        ${order.paymentScreenshot ? `<div><img src="${order.paymentScreenshot}" class="screenshot-img" alt="payment slip"></div>` : ""}
                     </div>
                 `;
             });
@@ -259,32 +303,6 @@
         }
         document.getElementById("myOrdersModal").style.display = "flex";
         document.getElementById("overlay").style.display = "block";
-    }
-    
-    // Upload screenshot from gallery
-    function uploadScreenshot(orderId) {
-        let input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
-        input.capture = "environment";
-        input.onchange = function(e) {
-            let file = e.target.files[0];
-            if(file) {
-                let reader = new FileReader();
-                reader.onload = function(ev) {
-                    let order = orders.find(o => o.id === orderId);
-                    if(order) {
-                        order.paymentScreenshot = ev.target.result;
-                        saveOrders();
-                        showToast("Screenshot တင်ခြင်း အောင်မြင်ပါသည်");
-                        showMyOrders();
-                        renderAdminOrders();
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        };
-        input.click();
     }
     
     function renderCategories() {
@@ -318,54 +336,85 @@
         let total = 0, html = "";
         cart.forEach(item => { let sub = item.price * item.quantity; total += sub; html += `<div class="cart-item"><div><strong>${item.name}</strong><br>${item.price.toLocaleString()} x ${item.quantity}</div><div class="qty-control"><button class="qty-minus" data-id="${item.id}">-</button><span>${item.quantity}</span><button class="qty-plus" data-id="${item.id}">+</button><button class="remove-item" data-id="${item.id}" style="background:red; color:white; border:none; border-radius:30px; width:28px;">✕</button></div></div>`; });
         document.getElementById("cartItemsList").innerHTML = html;
-        let deliveryFee = document.getElementById("deliveryCity")?.value === "yangon" ? 2000 : 5000;
+        
+        let selectedCity = document.getElementById("deliveryCity")?.value || "ရန်ကုန်မြို့အတွင်း";
+        let deliveryFee = deliveryFees[selectedCity] || 5000;
         let discount = total >= 300000 ? total * 0.05 : 0;
         let grandTotal = total + deliveryFee - discount;
         document.getElementById("cartTotalAmount").innerHTML = `ပစ္စည်းတန်ဖိုး: ${total.toLocaleString()} ကျပ်<br>ပို့ဆောင်ခ: ${deliveryFee.toLocaleString()} ကျပ်<br>${discount > 0 ? `Discount (5%): -${discount.toLocaleString()} ကျပ်<br>` : ""}<strong>စုစုပေါင်း: ${grandTotal.toLocaleString()} ကျပ်</strong>`;
+        
         document.querySelectorAll(".qty-minus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id)); if(item) { item.quantity--; if(item.quantity <= 0) cart = cart.filter(i => i.id !== item.id); updateCartUI(); } }));
         document.querySelectorAll(".qty-plus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id)); if(item) { item.quantity++; updateCartUI(); } }));
         document.querySelectorAll(".remove-item").forEach(btn => btn.addEventListener("click", () => { cart = cart.filter(i => i.id !== parseInt(btn.dataset.id)); updateCartUI(); }));
     }
     
-    function showToast(msg) { let t = document.createElement("div"); t.className = "toast-msg"; t.innerText = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+    function renderDeliveryCitySelect() {
+        let select = document.getElementById("deliveryCity");
+        if(select) {
+            select.innerHTML = Object.keys(deliveryFees).map(city => `<option value="${city}">${city} (ပို့ဆောင်ခ ${deliveryFees[city].toLocaleString()}ကျပ်)</option>`).join("");
+            select.addEventListener("change", () => updateCartUI());
+        }
+    }
+    
+    function renderPaymentMethods() {
+        let container = document.getElementById("paymentMethodsGrid");
+        if(container) {
+            container.innerHTML = paymentMethods.map(pm => `
+                <div class="payment-option ${selectedPayment.id === pm.id ? 'selected' : ''}" data-id="${pm.id}">
+                    <i class="${pm.icon}"></i> ${pm.name}
+                </div>
+            `).join("");
+            document.querySelectorAll(".payment-option").forEach(opt => {
+                opt.addEventListener("click", () => {
+                    selectedPayment = paymentMethods.find(pm => pm.id === opt.dataset.id);
+                    renderPaymentMethods();
+                });
+            });
+        }
+    }
     
     function copyPhone(phone) {
         navigator.clipboard.writeText(phone);
         showToast("📋 ဖုန်းနံပါတ် " + phone + " ကို ကူးယူပြီးပါပြီ");
     }
     
-    function createOrder(paymentMethod, paymentPhone) {
-        let name = document.getElementById("customerName")?.value, phone = document.getElementById("customerPhone")?.value, addr = document.getElementById("customerAddress")?.value;
-        if(!name || !phone || !addr) { alert("နာမည်၊ ဖုန်းနံပါတ်၊ လိပ်စာ ဖြည့်ပါ"); return null; }
+    function placeOrder() {
+        let name = document.getElementById("customerName")?.value;
+        let phone = document.getElementById("customerPhone")?.value;
+        let address = document.getElementById("customerAddress")?.value;
+        let deliveryCity = document.getElementById("deliveryCity")?.value;
+        
+        if(!name || !phone || !address) { alert("နာမည်၊ ဖုန်းနံပါတ်၊ လိပ်စာ ဖြည့်ပါ"); return; }
+        if(cart.length === 0) { alert("ပစ္စည်းများ ထည့်သွင်းပါ"); return; }
+        
         let total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-        let deliveryFee = document.getElementById("deliveryCity")?.value === "yangon" ? 2000 : 5000;
+        let deliveryFee = deliveryFees[deliveryCity] || 5000;
         let discount = total >= 300000 ? total * 0.05 : 0;
         let grandTotal = total + deliveryFee - discount;
         let orderId = "BANYAR" + Date.now();
         
+        let paymentMsg = selectedPayment.phone ? 
+            `\n📱 ငွေသွင်းရန်: ${selectedPayment.name} - ${selectedPayment.phone}\n👉 ဖုန်းနံပါတ်ကို နှိပ်ပြီး Copy ယူနိုင်ပါတယ်။` : 
+            `\n💳 ငွေပေးချေမှု: ${selectedPayment.name}`;
+        
         let newOrder = {
-            id: orderId, date: new Date().toLocaleString(), customerName: name, customerPhone: phone, customerAddress: addr,
-            deliveryCity: document.getElementById("deliveryCity")?.value, note: document.getElementById("orderNote")?.value,
+            id: orderId, date: new Date().toLocaleString(), customerName: name, customerPhone: phone, customerAddress: address,
+            deliveryCity: deliveryCity, deliveryFee: deliveryFee, note: document.getElementById("orderNote")?.value || "",
             items: cart.map(i => ({ id: i.id, name: i.name, quantity: i.quantity, price: i.price })),
-            subtotal: total, deliveryFee: deliveryFee, discount: discount, total: grandTotal,
-            paymentMethod: paymentMethod, paymentPhone: paymentPhone, paymentScreenshot: null, status: "pending", adminNote: ""
+            subtotal: total, discount: discount, total: grandTotal,
+            paymentMethod: selectedPayment.id, paymentName: selectedPayment.name, paymentPhone: selectedPayment.phone || "",
+            paymentScreenshot: orderScreenshotData, status: "pending"
         };
         orders.unshift(newOrder);
         saveOrders();
-        return newOrder;
-    }
-    
-    function handlePayment(method) {
-        if(cart.length === 0) { alert("ပစ္စည်းများ ထည့်သွင်းပါ"); return; }
-        let paymentPhone = method === "kpay" ? "09752949393" : "09685818193";
-        let order = createOrder(method, paymentPhone);
-        if(!order) return;
         
-        let msg = `**ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင်**\n\n📦 အော်ဒါနံပါတ်: ${order.id}\n💰 စုစုပေါင်းငွေ: ${order.total.toLocaleString()} ကျပ်\n\n📱 ငွေသွင်းရန် ${method === "kpay" ? "KBZ Pay" : "Wave Money"}: ${paymentPhone}\n\n👉 ဖုန်းနံပါတ်ကို နှိပ်ပြီး Copy ယူနိုင်ပါတယ်။\n\n⚠️ ငွေသွင်းပြီးပါက အော်ဒါများစာရင်းမှာ Screenshot တင်ပေးပါ။`;
-        
+        let msg = `**ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင်**\n\n📦 အော်ဒါနံပါတ်: ${orderId}\n💰 စုစုပေါင်းငွေ: ${grandTotal.toLocaleString()} ကျပ်\n🚚 ပို့ဆောင်မည့်နေရာ: ${deliveryCity}\n${paymentMsg}\n\n⚠️ ငွေသွင်းပြီးပါက Admin မှ အတည်ပြုပေးပါမည်။`;
         alert(`✅ အော်ဒါအောင်မြင်ပါသည်။\n\n${msg}`);
-        copyPhone(paymentPhone);
+        if(selectedPayment.phone) copyPhone(selectedPayment.phone);
+        
         cart = [];
+        orderScreenshotData = null;
+        document.getElementById("screenshotPreview").innerHTML = "";
         updateCartUI();
         document.getElementById("cartModal").classList.remove("open");
         document.getElementById("overlay").style.display = "none";
@@ -384,6 +433,45 @@
         `;
     }
     
+    function renderDeliveryFeesList() {
+        let container = document.getElementById("deliveryFeesList");
+        if(container) {
+            container.innerHTML = Object.entries(deliveryFees).map(([city, fee]) => `
+                <div class="delivery-fee-item">
+                    <span>${city}</span>
+                    <span>${fee.toLocaleString()} ကျပ်</span>
+                    <button class="edit-fee" data-city="${city}" style="background:#f59e0b; border:none; border-radius:20px; padding:2px 8px;">ပြင်</button>
+                    <button class="delete-fee" data-city="${city}" style="background:#ef4444; border:none; border-radius:20px; padding:2px 8px;">ဖျက်</button>
+                </div>
+            `).join("");
+            document.querySelectorAll(".edit-fee").forEach(btn => btn.addEventListener("click", () => {
+                let city = btn.dataset.city;
+                let newFee = prompt(`${city} အတွက် ပို့ဆောင်ခ အသစ် ထည့်ပါ:`, deliveryFees[city]);
+                if(newFee && !isNaN(newFee)) {
+                    deliveryFees[city] = parseInt(newFee);
+                    saveDeliveryFees();
+                    renderDeliveryFeesList();
+                    renderDeliveryCitySelect();
+                    updateCartUI();
+                    showToast(`${city} ပို့ဆောင်ခ ${parseInt(newFee).toLocaleString()}ကျပ် ပြင်ပြီးပါပြီ`);
+                }
+            }));
+            document.querySelectorAll(".delete-fee").forEach(btn => btn.addEventListener("click", () => {
+                let city = btn.dataset.city;
+                if(Object.keys(deliveryFees).length > 1 && confirm(`${city} ကို ဖျက်မှာလား?`)) {
+                    delete deliveryFees[city];
+                    saveDeliveryFees();
+                    renderDeliveryFeesList();
+                    renderDeliveryCitySelect();
+                    updateCartUI();
+                    showToast(`${city} ကို ဖျက်ပြီးပါပြီ`);
+                } else if(Object.keys(deliveryFees).length <= 1) {
+                    alert("အနည်းဆုံး တစ်ခုထားရပါမယ်");
+                }
+            }));
+        }
+    }
+    
     function renderAdminOrders() {
         let container = document.getElementById("adminOrdersList");
         if(!container) return;
@@ -391,18 +479,21 @@
         if(orders.length === 0) { container.innerHTML = "<div>အော်ဒါမရှိသေးပါ</div>"; return; }
         let html = "";
         orders.forEach((order) => {
-            let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : "✔️ ပြီးစီး");
+            let statusClass = order.status === "pending" ? "status-pending" : (order.status === "confirmed" ? "status-confirmed" : (order.status === "completed" ? "status-completed" : "status-cancelled"));
+            let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : (order.status === "completed" ? "✔️ ပြီးစီး" : "❌ ပယ်ဖျက်ထား"));
             html += `
                 <div class="order-card">
-                    <div><strong>📦 ${order.id}</strong> <span class="status-${order.status}">${statusText}</span></div>
+                    <div><strong>📦 ${order.id}</strong> <span class="${statusClass}">${statusText}</span></div>
                     <div><small>${order.date}</small></div>
                     <div>👤 ${order.customerName} | 📞 ${order.customerPhone}</div>
                     <div>📍 ${order.customerAddress}</div>
-                    <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentMethod === "kpay" ? "KBZ Pay" : "Wave Money"})</div>
+                    <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div>
+                    <div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div>
                     ${order.paymentScreenshot ? `<div><img src="${order.paymentScreenshot}" class="screenshot-img" alt="payment slip"></div>` : "<div>⏳ ငွေသွင်းပြေစာ မတင်ရသေး</div>"}
                     <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
-                        ${order.status === "pending" ? `<button class="accept-order" data-id="${order.id}" style="background:#10b981; color:white; border:none; border-radius:20px; padding:4px 12px;">✅ အော်ဒါလက်ခံမည်</button>` : ""}
-                        ${order.status === "confirmed" ? `<button class="complete-order" data-id="${order.id}" style="background:#3b82f6; color:white; border:none; border-radius:20px; padding:4px 12px;">✔️ ပြီးစီးကြောင်း သတ်မှတ်</button>` : ""}
+                        ${order.status === "pending" ? `<button class="accept-order" data-id="${order.id}" style="background:#10b981; color:white; border:none; border-radius:20px; padding:4px 12px;">✅ လက်ခံမည်</button>` : ""}
+                        ${order.status === "confirmed" ? `<button class="complete-order" data-id="${order.id}" style="background:#3b82f6; color:white; border:none; border-radius:20px; padding:4px 12px;">✔️ ပြီးစီးကြောင်းသတ်မှတ်</button>` : ""}
+                        ${order.status !== "cancelled" ? `<button class="cancel-order" data-id="${order.id}" style="background:#ef4444; color:white; border:none; border-radius:20px; padding:4px 12px;">❌ ပယ်ဖျက်မည်</button>` : ""}
                     </div>
                 </div>
             `;
@@ -419,7 +510,28 @@
             let order = orders.find(o => o.id === id);
             if(order) { order.status = "completed"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${id} ပြီးစီးပါပြီ`); }
         }));
+        document.querySelectorAll(".cancel-order").forEach(btn => btn.addEventListener("click", () => {
+            let id = btn.getAttribute("data-id");
+            let order = orders.find(o => o.id === id);
+            if(order && confirm(`အော်ဒါ ${id} ကို ပယ်ဖျက်မှာလား?`)) { order.status = "cancelled"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${id} ကို ပယ်ဖျက်ပြီးပါပြီ`); }
+        }));
     }
+    
+    // Add delivery fee
+    document.getElementById("addDeliveryFeeBtn")?.addEventListener("click", () => {
+        let city = document.getElementById("newCityName")?.value.trim();
+        let fee = parseInt(document.getElementById("newCityFee")?.value);
+        if(city && fee && !isNaN(fee)) {
+            deliveryFees[city] = fee;
+            saveDeliveryFees();
+            renderDeliveryFeesList();
+            renderDeliveryCitySelect();
+            updateCartUI();
+            document.getElementById("newCityName").value = "";
+            document.getElementById("newCityFee").value = "";
+            showToast(`${city} ထည့်ပြီးပါပြီ`);
+        } else { alert("မြို့အမည်နဲ့ ပို့ဆောင်ခ မှန်မှန်ထည့်ပါ"); }
+    });
     
     // Add product
     document.getElementById("addProductBtn")?.addEventListener("click", () => {
@@ -434,6 +546,29 @@
         } else alert("အချက်အလက်အပြည့်ဖြည့်ပါ");
     });
     
+    // Screenshot upload
+    document.getElementById("screenshotUploadArea")?.addEventListener("click", () => {
+        document.getElementById("orderScreenshot").click();
+    });
+    document.getElementById("orderScreenshot")?.addEventListener("change", (e) => {
+        let file = e.target.files[0];
+        if(file) {
+            let reader = new FileReader();
+            reader.onload = (ev) => {
+                orderScreenshotData = ev.target.result;
+                document.getElementById("screenshotPreview").innerHTML = `<img src="${orderScreenshotData}" class="screenshot-img" style="max-height:100px;"> <button id="removeScreenshotBtn" style="background:red; color:white; border:none; border-radius:20px; padding:2px 8px;">ဖျက်မည်</button>`;
+                document.getElementById("removeScreenshotBtn")?.addEventListener("click", () => {
+                    orderScreenshotData = null;
+                    document.getElementById("screenshotPreview").innerHTML = "";
+                    document.getElementById("orderScreenshot").value = "";
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    
+    document.getElementById("placeOrderBtn")?.addEventListener("click", placeOrder);
+    
     // Admin with password
     let adminPassword = "banyar123";
     document.getElementById("adminBtn")?.addEventListener("click", () => {
@@ -444,6 +579,7 @@
         let pwd = document.getElementById("adminPassword").value;
         if(pwd === adminPassword) {
             document.getElementById("adminPasswordModal").style.display = "none";
+            renderDeliveryFeesList();
             renderAdminOrders();
             document.getElementById("adminModal").style.display = "flex";
         } else { alert("စကားဝှက် မှားနေပါသည်"); }
@@ -460,7 +596,13 @@
     // Event listeners
     document.getElementById("searchBtn")?.addEventListener("click", () => { searchKeyword = document.getElementById("searchInput").value; filterAndRender(); });
     document.querySelectorAll(".sort-btn").forEach(btn => btn.addEventListener("click", () => { currentSort = btn.dataset.sort; document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active")); btn.classList.add("active"); filterAndRender(); }));
-    document.getElementById("cartIcon")?.addEventListener("click", () => { document.getElementById("cartModal").classList.add("open"); document.getElementById("overlay").style.display = "block"; updateCartUI(); });
+    document.getElementById("cartIcon")?.addEventListener("click", () => { 
+        renderDeliveryCitySelect();
+        renderPaymentMethods();
+        document.getElementById("cartModal").classList.add("open"); 
+        document.getElementById("overlay").style.display = "block"; 
+        updateCartUI(); 
+    });
     document.getElementById("closeCartBtn")?.addEventListener("click", () => { document.getElementById("cartModal").classList.remove("open"); document.getElementById("overlay").style.display = "none"; });
     document.getElementById("overlay")?.addEventListener("click", () => {
         document.getElementById("cartModal").classList.remove("open");
@@ -470,9 +612,6 @@
         document.getElementById("myOrdersModal").style.display = "none";
         document.getElementById("overlay").style.display = "none";
     });
-    document.getElementById("kpayBtn")?.addEventListener("click", () => handlePayment("kpay"));
-    document.getElementById("waveBtn")?.addEventListener("click", () => handlePayment("wave"));
-    document.getElementById("deliveryCity")?.addEventListener("change", () => updateCartUI());
     document.getElementById("loginSubmitBtn")?.addEventListener("click", loginOrSignup);
     document.getElementById("closeLoginBtn")?.addEventListener("click", () => {
         document.getElementById("loginModal").style.display = "none";
@@ -483,9 +622,9 @@
         document.getElementById("overlay").style.display = "none";
     });
     
+    function showToast(msg) { let t = document.createElement("div"); t.className = "toast-msg"; t.innerText = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+    
     renderCategories(); filterAndRender(); updateCartUI(); updateUserUI();
-    window.uploadScreenshot = uploadScreenshot;
-    window.copyPhone = copyPhone;
 </script>
 </body>
 </html>
