@@ -2,763 +2,129 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ဗညား(s.b) အိမ်ဆောက်ပစ္စည်း | Banyar Hardware - Premium Building Materials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>ဗညား(s.b) အိမ်ဆောက်ပစ္စည်း | Banyar Hardware</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%); color: #1a2c3e; min-height: 100vh; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9eef5 100%);
-            color: #1a2c3e;
-            min-height: 100vh;
-        }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        /* Header Styles */
-        .header {
-            background: linear-gradient(135deg, #1a472a 0%, #0f2a1d 100%);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-icon {
-            background: rgba(255, 255, 255, 0.15);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
-        .logo h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        .logo p {
-            font-size: 0.65rem;
-            opacity: 0.8;
-            letter-spacing: 0.5px;
-        }
-
-        .search-bar {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
-            position: relative;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.95);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-        .search-bar button {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #d4a13e;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .search-bar button:hover {
-            background: #b87c2e;
-            transform: translateY(-50%) scale(1.02);
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .action-btn {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(5px);
-            padding: 8px 16px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-        .cart-icon {
-            background: #d4a13e;
-            color: #1a2c3e;
-        }
-        .cart-icon:hover {
-            background: #e6b34c;
-        }
-        .cart-count {
-            background: white;
-            color: #1a472a;
-            border-radius: 30px;
-            padding: 2px 8px;
-            font-weight: bold;
-            font-size: 0.75rem;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
-            transition: all 0.3s;
-        }
-        .sidebar h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin: 1.2rem 0 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1a472a;
-        }
-        .sidebar h3:first-of-type {
-            margin-top: 0;
-        }
-        .category-list {
-            list-style: none;
-        }
-        .category-list li {
-            padding: 10px 14px;
-            margin: 4px 0;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-        .category-list li.active {
-            background: linear-gradient(135deg, #1a472a, #0f2a1d);
-            color: white;
-            box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
-        }
-        .category-list li:hover:not(.active) {
-            background: #eef2ff;
-            transform: translateX(5px);
-        }
-        .sort-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .sort-btn {
-            background: rgba(0, 0, 0, 0.05);
-            border: none;
-            padding: 8px 14px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .sort-btn.active {
-            background: #1a472a;
-            color: white;
-            box-shadow: 0 2px 8px rgba(26, 71, 42, 0.3);
-        }
-        .sort-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Product Grid */
-        .product-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.8rem;
-        }
-        .product-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        .product-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-        }
-        .product-img {
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: #1a472a;
-            transition: all 0.3s;
-        }
-        .product-card:hover .product-img {
-            transform: scale(1.05);
-        }
-        .product-info {
-            padding: 1.2rem;
-        }
-        .product-name {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-        .product-category {
-            font-size: 0.7rem;
-            color: #64748b;
-            margin-bottom: 8px;
-            display: inline-block;
-            background: #eef2ff;
-            padding: 2px 10px;
-            border-radius: 20px;
-        }
-        .product-price {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: #1a472a;
-            margin-top: 8px;
-        }
-        .add-to-cart {
-            margin-top: 12px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            border: none;
-            width: 100%;
-            padding: 10px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .add-to-cart:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
-        }
-
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 1100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: white;
-            max-width: 550px;
-            width: 90%;
-            border-radius: 32px;
-            padding: 1.8rem;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: modalSlideIn 0.3s ease;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Cart Modal */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 500px;
-            height: 100vh;
-            background: white;
-            z-index: 1101;
-            transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-        }
-        .cart-modal.open {
-            right: 0;
-        }
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #eef2ff;
-        }
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            margin: 1rem 0;
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 12px;
-            background: #f8fafc;
-            border-radius: 20px;
-        }
-        .qty-control {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .qty-control button {
-            background: #e2e8f0;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-        .qty-control button:hover {
-            background: #cbd5e1;
-            transform: scale(1.05);
-        }
-
-        /* Payment Methods Grid */
-        .payment-methods-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .payment-option {
-            background: #f1f5f9;
-            padding: 10px;
-            border-radius: 40px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .payment-option.selected {
-            background: linear-gradient(135deg, #1a472a, #0f2a1d);
-            color: white;
-            transform: scale(1.02);
-        }
-        .payment-option:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Form Elements */
-        .order-form input, .order-form textarea, .order-form select {
-            width: 100%;
-            padding: 12px 16px;
-            margin: 8px 0;
-            border-radius: 28px;
-            border: 1px solid #e2e8f0;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s;
-        }
-        .order-form input:focus, .order-form textarea:focus, .order-form select:focus {
-            outline: none;
-            border-color: #d4a13e;
-            box-shadow: 0 0 0 3px rgba(212, 161, 62, 0.1);
-        }
-
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 20px;
-            padding: 15px;
-            text-align: center;
-            margin-top: 10px;
-            cursor: pointer;
-            background: #f8fafc;
-            transition: all 0.2s;
-        }
-        .upload-area:hover {
-            border-color: #d4a13e;
-            background: #fef9e6;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            background: linear-gradient(135deg, #1a472a, #0f2a1d);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(26, 71, 42, 0.3);
-        }
-
-        .payment-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 60px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .payment-btn:hover {
-            transform: translateY(-2px);
-        }
-        .kpay { background: #009e60; color: white; }
-        .wave { background: #f4a261; color: white; }
-
-        /* Toast Message */
-        .toast-msg {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1a472a;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            z-index: 1200;
-            font-size: 0.85rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            animation: toastFadeIn 0.3s ease;
-        }
-        @keyframes toastFadeIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-
-        /* Status Badges */
+        /* Header */
+        .header { background: linear-gradient(135deg, #1a472a 0%, #0f2a1d 100%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .header-container { max-width: 1400px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { background: rgba(255,255,255,0.15); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .logo h1 { font-size: 1.3rem; font-weight: 700; }
+        .logo p { font-size: 0.65rem; opacity: 0.8; }
+        .search-bar { flex: 1; min-width: 250px; max-width: 400px; position: relative; }
+        .search-bar input { width: 100%; padding: 12px 20px; border: none; border-radius: 50px; background: rgba(255,255,255,0.95); font-size: 0.9rem; }
+        .search-bar button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #d4a13e; border: none; padding: 8px 20px; border-radius: 50px; color: white; cursor: pointer; }
+        .action-buttons { display: flex; gap: 12px; align-items: center; }
+        .action-btn { background: rgba(255,255,255,0.12); padding: 8px 16px; border-radius: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.85rem; }
+        .cart-icon { background: #d4a13e; color: #1a2c3e; }
+        .cart-count { background: white; border-radius: 30px; padding: 2px 8px; font-weight: bold; font-size: 0.75rem; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-wrap: wrap; gap: 2rem; }
+        .sidebar { width: 280px; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-radius: 28px; padding: 1.5rem; height: fit-content; position: sticky; top: 100px; }
+        .sidebar h3 { font-size: 0.9rem; font-weight: 600; margin: 1.2rem 0 1rem 0; display: flex; align-items: center; gap: 8px; color: #1a472a; }
+        .sidebar h3:first-of-type { margin-top: 0; }
+        .category-list { list-style: none; }
+        .category-list li { padding: 10px 14px; margin: 4px 0; border-radius: 40px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+        .category-list li.active { background: linear-gradient(135deg, #1a472a, #0f2a1d); color: white; }
+        .sort-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sort-btn { background: rgba(0,0,0,0.05); border: none; padding: 8px 14px; border-radius: 40px; font-size: 0.75rem; cursor: pointer; }
+        .sort-btn.active { background: #1a472a; color: white; }
+        .product-grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; }
+        .product-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.3s; cursor: pointer; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
+        .product-img { background: linear-gradient(135deg, #f8fafc, #f1f5f9); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #1a472a; }
+        .product-info { padding: 1.2rem; }
+        .product-name { font-weight: 700; margin-bottom: 4px; }
+        .product-category { font-size: 0.7rem; color: #64748b; display: inline-block; background: #eef2ff; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+        .product-price { font-weight: 800; font-size: 1.2rem; color: #1a472a; margin-top: 6px; }
+        .add-to-cart { margin-top: 12px; background: linear-gradient(135deg, #f59e0b, #d97706); border: none; width: 100%; padding: 10px; border-radius: 40px; font-weight: 600; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 1100; display: none; align-items: center; justify-content: center; }
+        .modal-content { background: white; max-width: 600px; width: 90%; border-radius: 32px; padding: 1.8rem; max-height: 85vh; overflow-y: auto; animation: modalSlideIn 0.3s ease; }
+        @keyframes modalSlideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .cart-modal { position: fixed; top: 0; right: -100%; width: 100%; max-width: 500px; height: 100vh; background: white; z-index: 1101; transition: right 0.3s; display: flex; flex-direction: column; padding: 1.5rem; }
+        .cart-modal.open { right: 0; }
+        .cart-items { flex: 1; overflow-y: auto; margin: 1rem 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 12px; background: #f8fafc; border-radius: 20px; }
+        .qty-control { display: flex; gap: 8px; align-items: center; }
+        .qty-control button { background: #e2e8f0; border: none; width: 30px; height: 30px; border-radius: 30px; cursor: pointer; }
+        .payment-methods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin: 15px 0; }
+        .payment-option { background: #f1f5f9; padding: 10px; border-radius: 40px; text-align: center; cursor: pointer; font-size: 0.75rem; transition: all 0.2s; }
+        .payment-option.selected { background: linear-gradient(135deg, #1a472a, #0f2a1d); color: white; }
+        .order-form input, .order-form textarea, .order-form select { width: 100%; padding: 12px; margin: 8px 0; border-radius: 28px; border: 1px solid #e2e8f0; }
+        .upload-area { border: 2px dashed #cbd5e1; border-radius: 20px; padding: 15px; text-align: center; margin-top: 10px; cursor: pointer; background: #f8fafc; }
+        .btn-primary { background: linear-gradient(135deg, #1a472a, #0f2a1d); color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 600; cursor: pointer; width: 100%; }
+        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1a472a; color: white; padding: 12px 24px; border-radius: 50px; z-index: 1200; }
         .status-pending { background: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
-        .status-confirmed { background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
-        .status-completed { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
-        .status-cancelled { background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; display: inline-block; }
-
-        .order-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-            transition: all 0.2s;
-        }
-        .order-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .screenshot-img {
-            max-width: 100%;
-            max-height: 150px;
-            border-radius: 16px;
-            margin-top: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .delivery-fee-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #f1f5f9;
-            margin: 8px 0;
-            border-radius: 16px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #eef2ff, #e6e9f0);
-            padding: 15px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        footer {
-            background: linear-gradient(135deg, #0f2a1d, #0a1f15);
-            color: #94a3b8;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .search-bar {
-                max-width: 100%;
-            }
-            .action-buttons {
-                justify-content: center;
-            }
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-            .container {
-                flex-direction: column;
-            }
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            }
-        }
-
-        /* Loading Animation */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        .status-confirmed { background: #d1fae5; color: #065f46; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+        .status-completed { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+        .status-cancelled { background: #fee2e2; color: #991b1b; padding: 4px 10px; border-radius: 20px; display: inline-block; }
+        .order-card { background: #f8fafc; border-radius: 20px; padding: 15px; margin-bottom: 15px; }
+        .screenshot-img { max-width: 100%; max-height: 150px; border-radius: 16px; margin-top: 10px; }
+        .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; flex-wrap: wrap; }
+        .admin-tab { padding: 8px 20px; border-radius: 40px; cursor: pointer; background: #f1f5f9; transition: all 0.2s; }
+        .admin-tab.active { background: #1a472a; color: white; }
+        .brand-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f1f5f9; margin: 8px 0; border-radius: 16px; }
+        .brand-selector { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; }
+        .brand-option { background: #e2e8f0; padding: 8px 16px; border-radius: 40px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+        .brand-option.selected { background: #1a472a; color: white; }
+        .product-detail-price { font-size: 1.5rem; font-weight: 800; color: #1a472a; margin: 10px 0; }
+        @media (max-width: 768px) { .sidebar { width: 100%; position: static; } .container { flex-direction: column; } }
     </style>
 </head>
 <body>
 <div class="header">
     <div class="header-container">
-        <div class="logo">
-            <div class="logo-icon"><i class="fas fa-hard-hat"></i></div>
-            <div>
-                <h1>ဗညား(s.b) အိမ်ဆောက်ပစ္စည်း</h1>
-                <p>Banyar Hardware - Premium Quality Since 2025</p>
-            </div>
-        </div>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="🔍 ပစ္စည်းရှာရန်...">
-            <button id="searchBtn"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="action-buttons">
-            <div class="action-btn" id="userAreaBtn"></div>
-            <div class="action-btn cart-icon" id="cartIcon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </div>
-            <div class="action-btn" id="adminBtn">
-                <i class="fas fa-cog"></i> Admin
-            </div>
-        </div>
+        <div class="logo"><div class="logo-icon"><i class="fas fa-hard-hat"></i></div><div><h1>ဗညား(s.b) အိမ်ဆောက်ပစ္စည်း</h1><p>Banyar Hardware - Premium Quality</p></div></div>
+        <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 ပစ္စည်းရှာရန်..."><button id="searchBtn"><i class="fas fa-search"></i></button></div>
+        <div class="action-buttons"><div class="action-btn" id="userAreaBtn"></div><div class="action-btn cart-icon" id="cartIcon"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></div><div class="action-btn" id="adminBtn"><i class="fas fa-cog"></i> Admin</div></div>
     </div>
 </div>
 
 <div class="container">
-    <div class="sidebar">
-        <h3><i class="fas fa-tags"></i> အမျိုးအစားများ</h3>
-        <ul class="category-list" id="categoryList"></ul>
-        <h3><i class="fas fa-arrow-up-wide-short"></i> ဈေးနှုန်း</h3>
-        <div class="sort-buttons">
-            <button class="sort-btn" data-sort="asc">ဈေးနည်းရာမှများ</button>
-            <button class="sort-btn" data-sort="desc">ဈေးများရာမှနည်း</button>
-        </div>
-    </div>
+    <div class="sidebar"><h3><i class="fas fa-tags"></i> အမျိုးအစားများ</h3><ul class="category-list" id="categoryList"></ul><h3><i class="fas fa-arrow-up-wide-short"></i> ဈေးနှုန်း</h3><div class="sort-buttons"><button class="sort-btn" data-sort="asc">ဈေးနည်းရာမှများ</button><button class="sort-btn" data-sort="desc">ဈေးများရာမှနည်း</button></div></div>
     <div class="product-grid" id="productGrid"></div>
 </div>
 
 <!-- Login Modal -->
-<div class="modal" id="loginModal">
-    <div class="modal-content">
-        <h3 style="margin-bottom: 1rem;"><i class="fas fa-user-circle"></i> အကောင့်ဝင်ရန် / ဖွင့်ရန်</h3>
-        <input type="text" id="loginPhone" placeholder="📱 ဖုန်းနံပါတ် (09xxxxxxxx)" style="width:100%; padding:12px; margin:8px 0; border-radius:28px; border:1px solid #e2e8f0;">
-        <input type="text" id="loginName" placeholder="👤 နာမည် (အသစ်ဖွင့်ရင်)" style="width:100%; padding:12px; margin:8px 0; border-radius:28px; border:1px solid #e2e8f0;">
-        <button id="loginSubmitBtn" class="btn-primary" style="width:100%; margin-top:10px;">ဝင်မည် / အကောင့်ဖွင့်မည်</button>
-        <button id="closeLoginBtn" style="margin-top:12px; background:#e2e8f0; border:none; padding:10px; border-radius:40px; width:100%; cursor:pointer;">ပိတ်မည်</button>
-    </div>
-</div>
+<div class="modal" id="loginModal"><div class="modal-content"><h3><i class="fas fa-user-circle"></i> အကောင့်ဝင်ရန်</h3><input type="text" id="loginPhone" placeholder="📱 ဖုန်းနံပါတ်"><input type="text" id="loginName" placeholder="👤 နာမည် (အသစ်ဖွင့်ရင်)"><button id="loginSubmitBtn" class="btn-primary">ဝင်မည်</button><button id="closeLoginBtn" style="margin-top:10px; background:#e2e8f0; border:none; padding:10px; border-radius:40px;">ပိတ်မည်</button></div></div>
 
 <!-- My Orders Modal -->
-<div class="modal" id="myOrdersModal">
-    <div class="modal-content" style="max-width:650px;">
-        <h3><i class="fas fa-box-open"></i> ကျွန်ုပ်၏ အော်ဒါများ</h3>
-        <div id="customerOrdersList" style="max-height:500px; overflow-y:auto; margin-top:15px;"></div>
-        <button id="closeMyOrdersBtn" style="margin-top:15px; background:#e2e8f0; border:none; padding:12px; border-radius:40px; width:100%; cursor:pointer;">ပိတ်မည်</button>
-    </div>
-</div>
+<div class="modal" id="myOrdersModal"><div class="modal-content" style="max-width:650px;"><h3><i class="fas fa-box-open"></i> ကျွန်ုပ်၏ အော်ဒါများ</h3><div id="customerOrdersList"></div><button id="closeMyOrdersBtn" style="margin-top:15px; background:#e2e8f0; border:none; padding:12px; border-radius:40px;">ပိတ်မည်</button></div></div>
+
+<!-- Product Detail Modal with Brands -->
+<div class="modal" id="productDetailModal"><div class="modal-content" id="productDetailContent"></div></div>
 
 <!-- Cart Modal -->
-<div class="cart-modal" id="cartModal">
-    <div class="cart-header">
-        <h3><i class="fas fa-shopping-bag"></i> ခြင်းတောင်း</h3>
-        <button id="closeCartBtn" style="background:none; border:none; font-size:1.5rem; cursor:pointer;"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="cart-items" id="cartItemsList"></div>
-    <div class="cart-total" id="cartTotalAmount" style="font-weight:700; font-size:1.1rem; padding:10px 0; border-top:2px solid #eef2ff;"></div>
-    <div class="order-form">
-        <input type="text" id="customerName" placeholder="နာမည် *">
-        <input type="text" id="customerPhone" placeholder="ဖုန်းနံပါတ် *">
-        <input type="text" id="customerAddress" placeholder="လိပ်စာ *">
-        <select id="deliveryCity" class="delivery-select"></select>
-        <textarea id="orderNote" rows="2" placeholder="မှတ်ချက် (အထူးလိုအပ်ချက်ရှိပါက)"></textarea>
-        
-        <div class="upload-area" id="screenshotUploadArea">
-            <i class="fas fa-cloud-upload-alt"></i> ငွေသွင်းပြေစာ Screenshot တင်ရန်
-            <input type="file" id="orderScreenshot" accept="image/*" style="display: none;">
-        </div>
-        <div id="screenshotPreview" style="margin-top: 8px;"></div>
-        
-        <div class="payment-methods-grid" id="paymentMethodsGrid"></div>
-    </div>
-    <button id="placeOrderBtn" class="btn-primary" style="margin-top:15px;">✅ အော်ဒါတင်မည်</button>
-</div>
+<div class="cart-modal" id="cartModal"><div style="display:flex; justify-content:space-between;"><h3><i class="fas fa-shopping-bag"></i> ခြင်းတောင်း</h3><button id="closeCartBtn" style="background:none; border:none; font-size:1.5rem;">✕</button></div><div class="cart-items" id="cartItemsList"></div><div class="cart-total" id="cartTotalAmount"></div><div class="order-form"><input type="text" id="customerName" placeholder="နာမည် *"><input type="text" id="customerPhone" placeholder="ဖုန်းနံပါတ် *"><input type="text" id="customerAddress" placeholder="လိပ်စာ *"><select id="deliveryCity"></select><textarea id="orderNote" rows="2" placeholder="မှတ်ချက်"></textarea><div class="upload-area" id="screenshotUploadArea"><i class="fas fa-cloud-upload-alt"></i> ငွေသွင်းပြေစာ Screenshot တင်ရန်<input type="file" id="orderScreenshot" accept="image/*" style="display:none;"></div><div id="screenshotPreview"></div><div class="payment-methods-grid" id="paymentMethodsGrid"></div></div><button id="placeOrderBtn" class="btn-primary">✅ အော်ဒါတင်မည်</button></div>
 
 <!-- Admin Modal -->
-<div class="modal" id="adminModal">
-    <div class="modal-content" style="max-width:750px;">
-        <h3><i class="fas fa-user-cog"></i> Admin Panel</h3>
-        <div id="adminStats" class="stat-card"></div>
-        
-        <h4>📦 ပို့ဆောင်ခ သတ်မှတ်ချက်များ</h4>
-        <div id="deliveryFeesList"></div>
-        <div style="display:flex; gap:10px; margin-top:12px;">
-            <input type="text" id="newCityName" placeholder="မြို့အမည်" style="flex:1; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-            <input type="number" id="newCityFee" placeholder="ပို့ဆောင်ခ" style="width:110px; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-            <button id="addDeliveryFeeBtn" style="background:#1a472a; color:white; border:none; border-radius:40px; padding:0 18px; cursor:pointer;">+ ထည့်</button>
-        </div>
-        
-        <hr style="margin: 20px 0;">
-        <h4>📋 အော်ဒါများ</h4>
-        <div id="adminOrdersList" style="max-height:400px; overflow-y:auto;"></div>
-        
-        <hr style="margin: 20px 0;">
-        <h4>➕ ပစ္စည်းအသစ်ထည့်ရန်</h4>
-        <div style="display:flex; flex-wrap:wrap; gap:8px;">
-            <input type="text" id="newProductName" placeholder="ပစ္စည်းအမည်" style="flex:2; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-            <input type="text" id="newProductCategory" placeholder="အမျိုးအစား" style="flex:1; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-            <input type="number" id="newProductPrice" placeholder="ဈေးနှုန်း" style="flex:1; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-            <input type="text" id="newProductIcon" placeholder="Icon class" style="flex:1; padding:10px; border-radius:28px; border:1px solid #e2e8f0;">
-        </div>
-        <button id="addProductBtn" class="btn-primary" style="margin-top:12px; width:100%;">ပစ္စည်းအသစ်ထည့်မည်</button>
-        <button id="closeAdminBtn" style="margin-top:15px; background:#e2e8f0; border:none; padding:12px; border-radius:40px; width:100%; cursor:pointer;">ပိတ်မည်</button>
-    </div>
-</div>
+<div class="modal" id="adminModal"><div class="modal-content" style="max-width:800px;"><h3><i class="fas fa-user-cog"></i> Admin Panel</h3><div class="admin-tabs"><div class="admin-tab active" data-tab="dashboard">📊 Dashboard</div><div class="admin-tab" data-tab="orders">📦 အော်ဒါများ</div><div class="admin-tab" data-tab="products">🏷️ ပစ္စည်းများ</div><div class="admin-tab" data-tab="delivery">🚚 ပို့ဆောင်ခ</div><div class="admin-tab" data-tab="users">👥 အသုံးပြုသူများ</div></div><div id="adminDashboard"></div><div id="adminOrdersList" style="display:none;"></div><div id="adminProductsList" style="display:none;"></div><div id="adminDeliveryList" style="display:none;"></div><div id="adminUsersList" style="display:none;"></div><button id="closeAdminBtn" style="margin-top:15px; background:#e2e8f0; border:none; padding:12px; border-radius:40px; width:100%;">ပိတ်မည်</button></div></div>
 
 <!-- Admin Password Modal -->
-<div class="modal" id="adminPasswordModal">
-    <div class="modal-content">
-        <h3><i class="fas fa-lock"></i> Admin ဝင်ရန်</h3>
-        <input type="password" id="adminPassword" placeholder="စကားဝှက်" style="width:100%; padding:12px; margin:15px 0; border-radius:28px; border:1px solid #e2e8f0;">
-        <button id="adminPasswordSubmitBtn" class="btn-primary" style="width:100%;">အတည်ပြုမည်</button>
-        <button id="closeAdminPasswordBtn" style="margin-top:12px; background:#e2e8f0; border:none; padding:12px; border-radius:40px; width:100%; cursor:pointer;">ပိတ်မည်</button>
-    </div>
-</div>
+<div class="modal" id="adminPasswordModal"><div class="modal-content"><h3><i class="fas fa-lock"></i> Admin ဝင်ရန်</h3><input type="password" id="adminPassword" placeholder="စကားဝှက်"><button id="adminPasswordSubmitBtn" class="btn-primary">အတည်ပြုမည်</button><button id="closeAdminPasswordBtn" style="margin-top:10px; background:#e2e8f0; border:none; padding:10px; border-radius:40px;">ပိတ်မည်</button></div></div>
 
 <div id="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:1050; display:none;"></div>
-<footer>
-    <p>© 2025 ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင် | အရည်အသွေးမြင့် ဆောက်လုပ်ရေးပစ္စည်းများ | နေရပ်အရောက် ပို့ဆောင်ပေး</p>
-</footer>
+<footer style="background:#0f2a1d; color:#94a3b8; text-align:center; padding:1.5rem; margin-top:2rem;"><p>© 2025 ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင် | အရည်အသွေးမြင့် ဆောက်လုပ်ရေးပစ္စည်းများ</p></footer>
 
 <script>
-    // ---------- PRODUCTS ----------
+    // Products with Brands
     let products = [
-        { id: 1, name: "ဘိလပ်မြေ (crown) ၅၀ကီလို", category: "ဘိလပ်မြေ", price: 12500, imgIcon: "fas fa-cube" },
-        { id: 2, name: "သံချောင်း (အလုံး) ၁၂မီလီ", category: "သံချောင်း", price: 55000, imgIcon: "fas fa-charging-station" },
-        { id: 3, name: "ဆေးသုတ် (အိမ်သုံး) ၁ဂါလံ", category: "ဆေးသုတ်", price: 18500, imgIcon: "fas fa-paint-roller" },
-        { id: 4, name: "ကြွေပြား (၆၀x၆၀) ၁ချပ်", category: "ကြွေပြား", price: 4500, imgIcon: "fas fa-th-large" },
-        { id: 5, name: "အိမ်သာခွက်", category: "သန့်စင်ခန်း", price: 185000, imgIcon: "fas fa-toilet" },
-        { id: 6, name: "LED မီးလုံး (၁၀ဝပ်)", category: "လျှပ်စစ်", price: 5500, imgIcon: "fas fa-sun" }
+        { id: 1, name: "ဘိလပ်မြေ", category: "ဘိလပ်မြေ", basePrice: 12500, imgIcon: "fas fa-cube", description: "အရည်အသွေးမြင့် ဘိလပ်မြေ၊ ဆောက်လုပ်ရေးအတွက် အကောင်းဆုံး", brands: [{ name: "Crown", price: 12500 }, { name: "Max", price: 12800 }, { name: "Elephant", price: 13200 }, { name: "Alpha", price: 13500 }] },
+        { id: 2, name: "သံချောင်း", category: "သံချောင်း", basePrice: 55000, imgIcon: "fas fa-charging-station", description: "အဆောက်အဦအတွက် အဓိကသုံး သံချောင်း", brands: [{ name: "အလုံး ၁၂မီလီ", price: 55000 }, { name: "အလုံး ၁၀မီလီ", price: 38000 }, { name: "အလုံး ၈မီလီ", price: 26000 }] },
+        { id: 3, name: "ဆေးသုတ်", category: "ဆေးသုတ်", basePrice: 18500, imgIcon: "fas fa-paint-roller", description: "နံရံဆေး အိမ်တွင်းသုံး", brands: [{ name: "အိမ်သုံး ၁ဂါလံ", price: 18500 }, { name: "နံရံကပ်ဆေး ၅ဂါလံ", price: 72000 }, { name: "အပြင်ဘက် ဆေး", price: 45000 }] },
+        { id: 4, name: "ကြွေပြား", category: "ကြွေပြား", basePrice: 4500, imgIcon: "fas fa-th-large", description: "ကြမ်းခင်းနှင့် နံရံအတွက် ကြွေပြားများ", brands: [{ name: "၆၀x၆၀ ကြမ်းခင်း", price: 4500 }, { name: "၃၀x၆၀ နံရံကပ်", price: 3200 }, { name: "မှန်ပြောင် ကြွေပြား", price: 5500 }] },
+        { id: 5, name: "အိမ်သာခွက်", category: "သန့်စင်ခန်း", basePrice: 185000, imgIcon: "fas fa-toilet", description: "ခေတ်မီ အိမ်သာခွက်", brands: [{ name: "စံအဆင့်", price: 185000 }, { name: "အဆင့်မြင့်", price: 250000 }, { name: "အနောက်တိုင်း", price: 320000 }] },
+        { id: 6, name: "LED မီးလုံး", category: "လျှပ်စစ်", basePrice: 5500, imgIcon: "fas fa-sun", description: "စွမ်းအင်ချွေတာရေး LED မီးလုံး", brands: [{ name: "၁၀ဝပ်", price: 5500 }, { name: "၁၅ဝပ်", price: 7500 }, { name: "၂၀ဝပ်", price: 9500 }] }
     ];
     let nextId = 7;
     let activeCategory = "all", currentSort = "asc", searchKeyword = "";
@@ -766,32 +132,20 @@
     let orders = JSON.parse(localStorage.getItem("banyar_orders")) || [];
     let customers = JSON.parse(localStorage.getItem("banyar_customers")) || [];
     let currentUser = JSON.parse(localStorage.getItem("banyar_current_user")) || null;
-    
-    let deliveryFees = JSON.parse(localStorage.getItem("banyar_delivery_fees")) || {
-        "ရန်ကုန်မြို့အတွင်း": 2000,
-        "မန္တလေးမြို့": 3000,
-        "နေပြည်တော်": 3500,
-        "အခြားမြို့": 5000
-    };
-    
+    let deliveryFees = JSON.parse(localStorage.getItem("banyar_delivery_fees")) || { "ရန်ကုန်မြို့အတွင်း": 2000, "မန္တလေးမြို့": 3000, "နေပြည်တော်": 3500, "အခြားမြို့": 5000 };
     let paymentMethods = [
         { id: "kpay", name: "KBZ Pay", phone: "09752949393", icon: "fas fa-mobile-alt" },
         { id: "wave", name: "Wave Pay", phone: "09685818193", icon: "fas fa-money-bill-wave" },
         { id: "ayapay", name: "AYA Pay", phone: "09444444444", icon: "fas fa-building" },
         { id: "cbpay", name: "CB Pay", phone: "09555555555", icon: "fas fa-university" },
         { id: "uabpay", name: "UAB Pay", phone: "09666666666", icon: "fas fa-piggy-bank" },
-        { id: "mpu", name: "MPU Card", phone: "", icon: "fas fa-credit-card" },
-        { id: "yomapay", name: "Yoma Pay", phone: "09777777777", icon: "fas fa-leaf" },
-        { id: "okdollar", name: "OK Dollar", phone: "09888888888", icon: "fas fa-dollar-sign" },
-        { id: "mpt", name: "MPT", phone: "", icon: "fas fa-tower-cell" },
-        { id: "ooredoo", name: "Ooredoo", phone: "", icon: "fas fa-wifi" },
-        { id: "telenor", name: "Telenor", phone: "", icon: "fas fa-broadcast-tower" },
-        { id: "onepay", name: "1Bill", phone: "", icon: "fas fa-file-invoice" },
-        { id: "twoc2p", name: "2C2P", phone: "", icon: "fas fa-exchange-alt" }
+        { id: "mpu", name: "MPU Card", phone: "", icon: "fas fa-credit-card" }
     ];
     let selectedPayment = paymentMethods[0];
     let orderScreenshotData = null;
-    
+    let selectedBrandProduct = null;
+    let selectedBrand = null;
+
     function saveOrders() { localStorage.setItem("banyar_orders", JSON.stringify(orders)); }
     function saveCustomers() { localStorage.setItem("banyar_customers", JSON.stringify(customers)); }
     function saveCurrentUser() { localStorage.setItem("banyar_current_user", JSON.stringify(currentUser)); }
@@ -800,464 +154,200 @@
     if(localStorage.getItem("banyar_products")) products = JSON.parse(localStorage.getItem("banyar_products"));
     
     let categories = [...new Set(products.map(p => p.category))];
-    
+
     function updateUserUI() {
         let userArea = document.getElementById("userAreaBtn");
-        if(currentUser) {
-            userArea.innerHTML = `<i class="fas fa-user-check"></i> ${currentUser.name} <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>`;
-            userArea.style.cursor = "pointer";
-            userArea.onclick = () => showMyOrders();
-            document.getElementById("userAreaBtn").style.background = "rgba(255,255,255,0.2)";
-        } else {
-            userArea.innerHTML = `<i class="fas fa-user"></i> ဝင်ရန်`;
-            userArea.style.cursor = "pointer";
-            userArea.onclick = () => showLoginModal();
-            document.getElementById("userAreaBtn").style.background = "rgba(255,255,255,0.12)";
-        }
+        if(currentUser) { userArea.innerHTML = `<i class="fas fa-user-check"></i> ${currentUser.name}`; userArea.onclick = () => showMyOrders(); }
+        else { userArea.innerHTML = `<i class="fas fa-user"></i> ဝင်ရန်`; userArea.onclick = () => showLoginModal(); }
     }
-    
-    function showLoginModal() {
-        document.getElementById("loginModal").style.display = "flex";
-        document.getElementById("overlay").style.display = "block";
-    }
-    
+    function showLoginModal() { document.getElementById("loginModal").style.display = "flex"; document.getElementById("overlay").style.display = "block"; }
     function loginOrSignup() {
-        let phone = document.getElementById("loginPhone").value.trim();
-        let name = document.getElementById("loginName").value.trim();
+        let phone = document.getElementById("loginPhone").value.trim(), name = document.getElementById("loginName").value.trim();
         if(!phone) { alert("ဖုန်းနံပါတ် ထည့်ပါ"); return; }
-        
         let existing = customers.find(c => c.phone === phone);
-        if(existing) {
-            currentUser = existing;
-            existing.lastLogin = new Date().toLocaleString();
-        } else {
-            if(!name) { alert("အကောင့်အသစ်အတွက် နာမည် ထည့်ပါ"); return; }
-            currentUser = { phone: phone, name: name, createdAt: new Date().toLocaleString(), lastLogin: new Date().toLocaleString() };
-            customers.push(currentUser);
-            saveCustomers();
-        }
-        saveCurrentUser();
-        updateUserUI();
-        document.getElementById("loginModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
+        if(existing) { currentUser = existing; existing.lastLogin = new Date().toLocaleString(); }
+        else { if(!name) { alert("နာမည် ထည့်ပါ"); return; } currentUser = { phone, name, createdAt: new Date().toLocaleString(), lastLogin: new Date().toLocaleString() }; customers.push(currentUser); saveCustomers(); }
+        saveCurrentUser(); updateUserUI();
+        document.getElementById("loginModal").style.display = "none"; document.getElementById("overlay").style.display = "none";
         showToast("အကောင့်ဝင်ရောက်မှု အောင်မြင်ပါသည်");
     }
-    
-    function logout() {
-        currentUser = null;
-        saveCurrentUser();
-        updateUserUI();
-        showToast("ထွက်ရန် အောင်မြင်ပါသည်");
-    }
-    
     function showMyOrders() {
         if(!currentUser) { alert("ကျေးဇူးပြု၍ အကောင့်ဝင်ပါ"); return; }
         let userOrders = orders.filter(o => o.customerPhone === currentUser.phone);
         let container = document.getElementById("customerOrdersList");
-        if(userOrders.length === 0) {
-            container.innerHTML = "<div style='text-align:center; padding:30px;'>📭 အော်ဒါမရှိသေးပါ</div>";
-        } else {
-            let html = "";
-            userOrders.forEach(order => {
-                let statusClass = order.status === "pending" ? "status-pending" : (order.status === "confirmed" ? "status-confirmed" : (order.status === "completed" ? "status-completed" : "status-cancelled"));
-                let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : (order.status === "completed" ? "✔️ ပြီးစီး" : "❌ ပယ်ဖျက်ထား"));
-                html += `
-                    <div class="order-card">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-                            <strong>📦 ${order.id}</strong>
-                            <span class="${statusClass}">${statusText}</span>
-                        </div>
-                        <div><small>📅 ${order.date}</small></div>
-                        <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div>
-                        <div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div>
-                        <div><strong>📦 ပစ္စည်းများ:</strong><br>${order.items.map(i => `• ${i.name} x${i.quantity} = ${(i.price * i.quantity).toLocaleString()}ကျပ်`).join("<br>")}</div>
-                        ${order.paymentScreenshot ? `<div><img src="${order.paymentScreenshot}" class="screenshot-img" alt="payment slip"></div>` : `<div class="upload-area" onclick="uploadScreenshot('${order.id}')" style="margin-top:10px;"><i class="fas fa-camera"></i> ငွေသွင်းပြေစာ တင်ရန်</div>`}
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
+        if(userOrders.length === 0) container.innerHTML = "<div style='text-align:center;padding:30px;'>📭 အော်ဒါမရှိသေးပါ</div>";
+        else {
+            container.innerHTML = userOrders.map(order => `<div class="order-card"><div><strong>📦 ${order.id}</strong> <span class="status-${order.status}">${order.status==="pending"?"⏳ ဆိုင်ရောက်လက်ခံရန်":order.status==="confirmed"?"✅ အတည်ပြုပြီး":order.status==="completed"?"✔️ ပြီးစီး":"❌ ပယ်ဖျက်ထား"}</span></div><div><small>${order.date}</small></div><div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div><div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div><div><strong>ပစ္စည်းများ:</strong><br>${order.items.map(i => `• ${i.name} ${i.brand ? `(${i.brand})` : ""} x${i.quantity} = ${(i.price * i.quantity).toLocaleString()}ကျပ်`).join("<br>")}</div>${order.paymentScreenshot ? `<img src="${order.paymentScreenshot}" class="screenshot-img">` : `<div class="upload-area" onclick="uploadScreenshot('${order.id}')"><i class="fas fa-camera"></i> ငွေသွင်းပြေစာ တင်ရန်</div>`}</div>`).join("");
         }
-        document.getElementById("myOrdersModal").style.display = "flex";
-        document.getElementById("overlay").style.display = "block";
+        document.getElementById("myOrdersModal").style.display = "flex"; document.getElementById("overlay").style.display = "block";
     }
-    
     function uploadScreenshot(orderId) {
-        let input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/*";
+        let input = document.createElement("input"); input.type = "file"; input.accept = "image/*";
         input.onchange = function(e) {
             let file = e.target.files[0];
-            if(file) {
-                let reader = new FileReader();
-                reader.onload = function(ev) {
-                    let order = orders.find(o => o.id === orderId);
-                    if(order) {
-                        order.paymentScreenshot = ev.target.result;
-                        saveOrders();
-                        showToast("Screenshot တင်ခြင်း အောင်မြင်ပါသည်");
-                        showMyOrders();
-                        renderAdminOrders();
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        };
-        input.click();
+            if(file) { let reader = new FileReader(); reader.onload = function(ev) { let order = orders.find(o => o.id === orderId); if(order) { order.paymentScreenshot = ev.target.result; saveOrders(); showToast("Screenshot တင်ခြင်း အောင်မြင်ပါသည်"); showMyOrders(); renderAdminOrders(); } }; reader.readAsDataURL(file); }
+        }; input.click();
     }
-    
+    function showProductDetail(product) {
+        selectedBrandProduct = product;
+        selectedBrand = product.brands[0];
+        let html = `<h3><i class="${product.imgIcon}"></i> ${product.name}</h3><p>${product.description}</p><div class="brand-selector"><strong>အမျိုးအစား / Brand ရွေးပါ:</strong></div><div class="brand-selector" id="brandSelector">${product.brands.map((b, idx) => `<div class="brand-option ${idx===0?'selected':''}" data-price="${b.price}" data-brand="${b.name}">${b.name} - ${b.price.toLocaleString()} ကျပ်</div>`).join("")}</div><div class="product-detail-price">💰 ရွေးချယ်ထားသော ဈေး: <span id="selectedBrandPrice">${product.brands[0].price.toLocaleString()}</span> ကျပ်</div><div style="display:flex; gap:10px; margin-top:15px;"><button id="detailAddToCart" class="btn-primary"><i class="fas fa-cart-plus"></i> ခြင်းတောင်းထဲထည့်မည်</button><button id="closeDetailBtn" style="background:#e2e8f0; border:none; padding:14px; border-radius:40px; flex:1;">ပိတ်မည်</button></div>`;
+        document.getElementById("productDetailContent").innerHTML = html;
+        document.querySelectorAll(".brand-option").forEach(opt => {
+            opt.addEventListener("click", () => {
+                document.querySelectorAll(".brand-option").forEach(o => o.classList.remove("selected"));
+                opt.classList.add("selected");
+                selectedBrand = { name: opt.dataset.brand, price: parseInt(opt.dataset.price) };
+                document.getElementById("selectedBrandPrice").innerText = selectedBrand.price.toLocaleString();
+            });
+        });
+        document.getElementById("detailAddToCart").addEventListener("click", () => {
+            let finalProduct = { ...product, selectedBrand: selectedBrand, price: selectedBrand.price, name: `${product.name} (${selectedBrand.name})` };
+            let exist = cart.find(i => i.id === product.id && i.selectedBrand?.name === selectedBrand.name);
+            if(exist) exist.quantity++;
+            else cart.push({ ...finalProduct, quantity: 1 });
+            updateCartUI(); showToast(`✓ ${finalProduct.name} ထည့်ပြီး`); document.getElementById("productDetailModal").style.display = "none"; document.getElementById("overlay").style.display = "none";
+        });
+        document.getElementById("closeDetailBtn").addEventListener("click", () => { document.getElementById("productDetailModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
+        document.getElementById("productDetailModal").style.display = "flex"; document.getElementById("overlay").style.display = "block";
+    }
     function renderCategories() {
         let html = `<li data-cat="all" class="${activeCategory === 'all' ? 'active' : ''}">📦 အားလုံး</li>`;
         categories.forEach(c => { html += `<li data-cat="${c}" class="${activeCategory === c ? 'active' : ''}">${c}</li>`; });
         document.getElementById("categoryList").innerHTML = html;
         document.querySelectorAll(".category-list li").forEach(li => li.addEventListener("click", () => { activeCategory = li.getAttribute("data-cat"); renderCategories(); filterAndRender(); }));
     }
-    
     function filterAndRender() {
         let filtered = products.filter(p => (activeCategory === "all" || p.category === activeCategory) && p.name.toLowerCase().includes(searchKeyword.toLowerCase()));
-        filtered.sort((a, b) => currentSort === "asc" ? a.price - b.price : b.price - a.price);
+        filtered.sort((a, b) => currentSort === "asc" ? a.basePrice - b.basePrice : b.basePrice - a.basePrice);
         renderProductGrid(filtered);
     }
-    
     function renderProductGrid(productsArray) {
-        let html = productsArray.map(p => `
-            <div class="product-card" data-id="${p.id}">
-                <div class="product-img"><i class="${p.imgIcon}"></i></div>
-                <div class="product-info">
-                    <div class="product-name">${p.name}</div>
-                    <div class="product-category">${p.category}</div>
-                    <div class="product-price">${p.price.toLocaleString()} ကျပ်</div>
-                    <button class="add-to-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> ထည့်ရန်</button>
-                </div>
-            </div>
-        `).join("");
-        document.getElementById("productGrid").innerHTML = html || '<div style="grid-column:1/-1;text-align:center;padding:50px;">🔍 ပစ္စည်းမတွေ့ပါ</div>';
-        document.querySelectorAll(".add-to-cart").forEach(btn => btn.addEventListener("click", (e) => { e.stopPropagation(); addToCart(parseInt(btn.dataset.id)); }));
+        let html = productsArray.map(p => `<div class="product-card" data-id="${p.id}"><div class="product-img"><i class="${p.imgIcon}"></i></div><div class="product-info"><div class="product-name">${p.name}</div><div class="product-category">${p.category}</div><div class="product-price">${p.basePrice.toLocaleString()} ကျပ်</div><button class="add-to-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> အသေးစိတ် / ဝယ်ရန်</button></div></div>`).join("");
+        document.getElementById("productGrid").innerHTML = html || '<div style="text-align:center;padding:50px;">🔍 ပစ္စည်းမတွေ့ပါ</div>';
+        document.querySelectorAll(".product-card").forEach(card => card.addEventListener("click", (e) => { if(!e.target.classList.contains("add-to-cart")) { let id = parseInt(card.dataset.id); showProductDetail(products.find(p => p.id === id)); } }));
+        document.querySelectorAll(".add-to-cart").forEach(btn => btn.addEventListener("click", (e) => { e.stopPropagation(); let id = parseInt(btn.dataset.id); showProductDetail(products.find(p => p.id === id)); }));
     }
-    
-    function addToCart(id) {
-        let p = products.find(p => p.id === id);
-        if(p) { let exist = cart.find(i => i.id === id); exist ? exist.quantity++ : cart.push({ ...p, quantity: 1 }); updateCartUI(); showToast("✓ " + p.name + " ထည့်ပြီး"); }
-    }
-    
+    function addToCartDirect(product) { let exist = cart.find(i => i.id === product.id); exist ? exist.quantity++ : cart.push({ ...product, quantity: 1 }); updateCartUI(); showToast("✓ " + product.name + " ထည့်ပြီး"); }
     function updateCartUI() {
         document.getElementById("cartCount").innerText = cart.reduce((s, i) => s + i.quantity, 0);
         if(!document.getElementById("cartItemsList")) return;
-        if(cart.length === 0) { document.getElementById("cartItemsList").innerHTML = "<div style='text-align:center; padding:30px;'>🛒 ခြင်းတောင်းထဲတွင် ပစ္စည်းမရှိပါ</div>"; document.getElementById("cartTotalAmount").innerHTML = "စုစုပေါင်း: 0 ကျပ်"; return; }
+        if(cart.length === 0) { document.getElementById("cartItemsList").innerHTML = "<div style='text-align:center;padding:30px;'>🛒 ခြင်းတောင်းထဲတွင် ပစ္စည်းမရှိပါ</div>"; document.getElementById("cartTotalAmount").innerHTML = "စုစုပေါင်း: 0 ကျပ်"; return; }
         let total = 0, html = "";
-        cart.forEach(item => { let sub = item.price * item.quantity; total += sub; html += `
-            <div class="cart-item">
-                <div><strong>${item.name}</strong><br>${item.price.toLocaleString()} x ${item.quantity}</div>
-                <div class="qty-control">
-                    <button class="qty-minus" data-id="${item.id}">-</button>
-                    <span style="min-width:30px; text-align:center;">${item.quantity}</span>
-                    <button class="qty-plus" data-id="${item.id}">+</button>
-                    <button class="remove-item" data-id="${item.id}" style="background:#ef4444; color:white; border:none; border-radius:30px; width:32px; height:32px;"><i class="fas fa-trash"></i></button>
-                </div>
-            </div>
-        `; });
+        cart.forEach(item => { let sub = item.price * item.quantity; total += sub; html += `<div class="cart-item"><div><strong>${item.name}</strong><br>${item.price.toLocaleString()} x ${item.quantity}</div><div class="qty-control"><button class="qty-minus" data-id="${item.id}" data-brand="${item.selectedBrand?.name||''}">-</button><span>${item.quantity}</span><button class="qty-plus" data-id="${item.id}" data-brand="${item.selectedBrand?.name||''}">+</button><button class="remove-item" data-id="${item.id}" data-brand="${item.selectedBrand?.name||''}" style="background:#ef4444; color:white; border:none; border-radius:30px; width:32px;"><i class="fas fa-trash"></i></button></div></div>`; });
         document.getElementById("cartItemsList").innerHTML = html;
-        
         let selectedCity = document.getElementById("deliveryCity")?.value || "ရန်ကုန်မြို့အတွင်း";
         let deliveryFee = deliveryFees[selectedCity] || 5000;
         let discount = total >= 300000 ? total * 0.05 : 0;
         let grandTotal = total + deliveryFee - discount;
-        document.getElementById("cartTotalAmount").innerHTML = `
-            <div>💰 ပစ္စည်းတန်ဖိုး: ${total.toLocaleString()} ကျပ်</div>
-            <div>🚚 ပို့ဆောင်ခ: ${deliveryFee.toLocaleString()} ကျပ်</div>
-            ${discount > 0 ? `<div>🎉 Discount (5%): -${discount.toLocaleString()} ကျပ်</div>` : ""}
-            <div style="font-size:1.2rem; margin-top:8px;"><strong>စုစုပေါင်း: ${grandTotal.toLocaleString()} ကျပ်</strong></div>
-        `;
-        
-        document.querySelectorAll(".qty-minus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id)); if(item) { item.quantity--; if(item.quantity <= 0) cart = cart.filter(i => i.id !== item.id); updateCartUI(); } }));
-        document.querySelectorAll(".qty-plus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id)); if(item) { item.quantity++; updateCartUI(); } }));
-        document.querySelectorAll(".remove-item").forEach(btn => btn.addEventListener("click", () => { cart = cart.filter(i => i.id !== parseInt(btn.dataset.id)); updateCartUI(); }));
+        document.getElementById("cartTotalAmount").innerHTML = `💰 ပစ္စည်းတန်ဖိုး: ${total.toLocaleString()} ကျပ်<br>🚚 ပို့ဆောင်ခ: ${deliveryFee.toLocaleString()} ကျပ်${discount>0?`<br>🎉 Discount: -${discount.toLocaleString()} ကျပ်`:""}<br><strong>စုစုပေါင်း: ${grandTotal.toLocaleString()} ကျပ်</strong>`;
+        document.querySelectorAll(".qty-minus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id) && i.selectedBrand?.name === btn.dataset.brand); if(item) { item.quantity--; if(item.quantity <= 0) cart = cart.filter(i => !(i.id === item.id && i.selectedBrand?.name === item.selectedBrand?.name)); updateCartUI(); } }));
+        document.querySelectorAll(".qty-plus").forEach(btn => btn.addEventListener("click", () => { let item = cart.find(i => i.id === parseInt(btn.dataset.id) && i.selectedBrand?.name === btn.dataset.brand); if(item) { item.quantity++; updateCartUI(); } }));
+        document.querySelectorAll(".remove-item").forEach(btn => btn.addEventListener("click", () => { cart = cart.filter(i => !(i.id === parseInt(btn.dataset.id) && i.selectedBrand?.name === btn.dataset.brand)); updateCartUI(); }));
     }
-    
     function renderDeliveryCitySelect() {
         let select = document.getElementById("deliveryCity");
-        if(select) {
-            select.innerHTML = Object.keys(deliveryFees).map(city => `<option value="${city}">${city} (ပို့ဆောင်ခ ${deliveryFees[city].toLocaleString()}ကျပ်)</option>`).join("");
-            select.addEventListener("change", () => updateCartUI());
-        }
+        if(select) { select.innerHTML = Object.keys(deliveryFees).map(city => `<option value="${city}">${city} (ပို့ဆောင်ခ ${deliveryFees[city].toLocaleString()}ကျပ်)</option>`).join(""); select.addEventListener("change", () => updateCartUI()); }
     }
-    
     function renderPaymentMethods() {
         let container = document.getElementById("paymentMethodsGrid");
-        if(container) {
-            container.innerHTML = paymentMethods.map(pm => `
-                <div class="payment-option ${selectedPayment.id === pm.id ? 'selected' : ''}" data-id="${pm.id}">
-                    <i class="${pm.icon}"></i> ${pm.name}
-                </div>
-            `).join("");
-            document.querySelectorAll(".payment-option").forEach(opt => {
-                opt.addEventListener("click", () => {
-                    selectedPayment = paymentMethods.find(pm => pm.id === opt.dataset.id);
-                    renderPaymentMethods();
-                });
-            });
-        }
+        if(container) { container.innerHTML = paymentMethods.map(pm => `<div class="payment-option ${selectedPayment.id === pm.id ? 'selected' : ''}" data-id="${pm.id}"><i class="${pm.icon}"></i> ${pm.name}</div>`).join(""); document.querySelectorAll(".payment-option").forEach(opt => { opt.addEventListener("click", () => { selectedPayment = paymentMethods.find(pm => pm.id === opt.dataset.id); renderPaymentMethods(); }); }); }
     }
-    
-    function showToast(msg) { 
-        let t = document.createElement("div"); 
-        t.className = "toast-msg"; 
-        t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`; 
-        document.body.appendChild(t); 
-        setTimeout(() => t.remove(), 2500); 
-    }
-    
-    function copyPhone(phone) {
-        navigator.clipboard.writeText(phone);
-        showToast("📋 ဖုန်းနံပါတ် " + phone + " ကို ကူးယူပြီးပါပြီ");
-    }
-    
+    function showToast(msg) { let t = document.createElement("div"); t.className = "toast-msg"; t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`; document.body.appendChild(t); setTimeout(() => t.remove(), 2500); }
+    function copyPhone(phone) { navigator.clipboard.writeText(phone); showToast("📋 ဖုန်းနံပါတ် " + phone + " ကို ကူးယူပြီးပါပြီ"); }
     function placeOrder() {
-        let name = document.getElementById("customerName")?.value;
-        let phone = document.getElementById("customerPhone")?.value;
-        let address = document.getElementById("customerAddress")?.value;
-        let deliveryCity = document.getElementById("deliveryCity")?.value;
-        
+        let name = document.getElementById("customerName")?.value, phone = document.getElementById("customerPhone")?.value, address = document.getElementById("customerAddress")?.value, deliveryCity = document.getElementById("deliveryCity")?.value;
         if(!name || !phone || !address) { alert("နာမည်၊ ဖုန်းနံပါတ်၊ လိပ်စာ ဖြည့်ပါ"); return; }
         if(cart.length === 0) { alert("ပစ္စည်းများ ထည့်သွင်းပါ"); return; }
-        
         let total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
         let deliveryFee = deliveryFees[deliveryCity] || 5000;
         let discount = total >= 300000 ? total * 0.05 : 0;
         let grandTotal = total + deliveryFee - discount;
         let orderId = "BANYAR" + Date.now();
-        
-        let newOrder = {
-            id: orderId, date: new Date().toLocaleString(), customerName: name, customerPhone: phone, customerAddress: address,
-            deliveryCity: deliveryCity, deliveryFee: deliveryFee, note: document.getElementById("orderNote")?.value || "",
-            items: cart.map(i => ({ id: i.id, name: i.name, quantity: i.quantity, price: i.price })),
-            subtotal: total, discount: discount, total: grandTotal,
-            paymentMethod: selectedPayment.id, paymentName: selectedPayment.name, paymentPhone: selectedPayment.phone || "",
-            paymentScreenshot: orderScreenshotData, status: "pending"
-        };
-        orders.unshift(newOrder);
-        saveOrders();
-        
-        let msg = `✅ အော်ဒါအောင်မြင်ပါသည်။\n\n📦 အော်ဒါနံပါတ်: ${orderId}\n💰 စုစုပေါင်းငွေ: ${grandTotal.toLocaleString()} ကျပ်\n🚚 ပို့ဆောင်မည့်နေရာ: ${deliveryCity}\n📱 ငွေသွင်းရန်: ${selectedPayment.name} ${selectedPayment.phone ? `- ${selectedPayment.phone}` : ""}\n\n⚠️ ငွေသွင်းပြီးပါက Admin မှ အတည်ပြုပေးပါမည်။`;
-        alert(msg);
+        let newOrder = { id: orderId, date: new Date().toLocaleString(), customerName: name, customerPhone: phone, customerAddress: address, deliveryCity, deliveryFee, note: document.getElementById("orderNote")?.value || "", items: cart.map(i => ({ id: i.id, name: i.name, brand: i.selectedBrand?.name, quantity: i.quantity, price: i.price })), subtotal: total, discount, total: grandTotal, paymentMethod: selectedPayment.id, paymentName: selectedPayment.name, paymentPhone: selectedPayment.phone || "", paymentScreenshot: orderScreenshotData, status: "pending" };
+        orders.unshift(newOrder); saveOrders();
+        alert(`✅ အော်ဒါအောင်မြင်ပါသည်။\n\n📦 အော်ဒါနံပါတ်: ${orderId}\n💰 စုစုပေါင်းငွေ: ${grandTotal.toLocaleString()} ကျပ်\n📱 ငွေသွင်းရန်: ${selectedPayment.name} ${selectedPayment.phone ? `- ${selectedPayment.phone}` : ""}`);
         if(selectedPayment.phone) copyPhone(selectedPayment.phone);
-        
-        cart = [];
-        orderScreenshotData = null;
-        document.getElementById("screenshotPreview").innerHTML = "";
-        document.getElementById("orderScreenshot").value = "";
-        updateCartUI();
-        document.getElementById("cartModal").classList.remove("open");
-        document.getElementById("overlay").style.display = "none";
+        cart = []; orderScreenshotData = null; document.getElementById("screenshotPreview").innerHTML = ""; updateCartUI();
+        document.getElementById("cartModal").classList.remove("open"); document.getElementById("overlay").style.display = "none";
         renderAdminOrders();
     }
-    
-    function renderAdminStats() {
-        let today = new Date().toLocaleDateString();
-        let todayActive = customers.filter(c => c.lastLogin && c.lastLogin.includes(today)).length;
-        document.getElementById("adminStats").innerHTML = `
-            <div style="display:flex; gap:15px; justify-content:space-around; flex-wrap:wrap;">
-                <div><i class="fas fa-users" style="font-size:1.5rem;"></i><br><strong style="font-size:1.3rem;">${customers.length}</strong><br>စုစုပေါင်းအသုံးပြုသူ</div>
-                <div><i class="fas fa-user-clock" style="font-size:1.5rem;"></i><br><strong style="font-size:1.3rem;">${todayActive}</strong><br>ယနေ့ဝင်သူ</div>
-                <div><i class="fas fa-chart-line" style="font-size:1.5rem;"></i><br><strong style="font-size:1.3rem;">${orders.length}</strong><br>စုစုပေါင်းအော်ဒါ</div>
-            </div>
-        `;
+    function renderAdminDashboard() {
+        let totalSales = orders.reduce((s, o) => s + o.total, 0);
+        let todayOrders = orders.filter(o => o.date.includes(new Date().toLocaleDateString())).length;
+        let todaySales = orders.filter(o => o.date.includes(new Date().toLocaleDateString())).reduce((s, o) => s + o.total, 0);
+        document.getElementById("adminDashboard").innerHTML = `<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px;"><div style="background:linear-gradient(135deg,#1a472a,#0f2a1d); color:white; padding:20px; border-radius:24px;"><i class="fas fa-chart-line" style="font-size:2rem;"></i><h2>${totalSales.toLocaleString()} ကျပ်</h2><p>စုစုပေါင်းရောင်းရငွေ</p></div><div style="background:#eef2ff; padding:20px; border-radius:24px;"><i class="fas fa-box" style="font-size:2rem;"></i><h2>${orders.length}</h2><p>စုစုပေါင်းအော်ဒါ</p></div><div style="background:#eef2ff; padding:20px; border-radius:24px;"><i class="fas fa-users" style="font-size:2rem;"></i><h2>${customers.length}</h2><p>စုစုပေါင်းအသုံးပြုသူ</p></div><div style="background:#eef2ff; padding:20px; border-radius:24px;"><i class="fas fa-calendar-day" style="font-size:2rem;"></i><h2>${todaySales.toLocaleString()} ကျပ်</h2><p>ယနေ့ဝင်ငွေ (${todayOrders} အော်ဒါ)</p></div></div>`;
     }
-    
-    function renderDeliveryFeesList() {
-        let container = document.getElementById("deliveryFeesList");
-        if(container) {
-            container.innerHTML = Object.entries(deliveryFees).map(([city, fee]) => `
-                <div class="delivery-fee-item">
-                    <span><i class="fas fa-location-dot"></i> ${city}</span>
-                    <span><strong>${fee.toLocaleString()} ကျပ်</strong></span>
-                    <div>
-                        <button class="edit-fee" data-city="${city}" style="background:#f59e0b; border:none; border-radius:20px; padding:4px 12px; cursor:pointer;"><i class="fas fa-edit"></i></button>
-                        <button class="delete-fee" data-city="${city}" style="background:#ef4444; border:none; border-radius:20px; padding:4px 12px; cursor:pointer; color:white;"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            `).join("");
-            document.querySelectorAll(".edit-fee").forEach(btn => btn.addEventListener("click", () => {
-                let city = btn.dataset.city;
-                let newFee = prompt(`${city} အတွက် ပို့ဆောင်ခ အသစ် ထည့်ပါ:`, deliveryFees[city]);
-                if(newFee && !isNaN(newFee)) {
-                    deliveryFees[city] = parseInt(newFee);
-                    saveDeliveryFees();
-                    renderDeliveryFeesList();
-                    renderDeliveryCitySelect();
-                    updateCartUI();
-                    showToast(`${city} ပို့ဆောင်ခ ${parseInt(newFee).toLocaleString()}ကျပ် ပြင်ပြီးပါပြီ`);
-                }
-            }));
-            document.querySelectorAll(".delete-fee").forEach(btn => btn.addEventListener("click", () => {
-                let city = btn.dataset.city;
-                if(Object.keys(deliveryFees).length > 1 && confirm(`${city} ကို ဖျက်မှာလား?`)) {
-                    delete deliveryFees[city];
-                    saveDeliveryFees();
-                    renderDeliveryFeesList();
-                    renderDeliveryCitySelect();
-                    updateCartUI();
-                    showToast(`${city} ကို ဖျက်ပြီးပါပြီ`);
-                } else if(Object.keys(deliveryFees).length <= 1) {
-                    alert("အနည်းဆုံး တစ်ခုထားရပါမယ်");
-                }
-            }));
-        }
-    }
-    
     function renderAdminOrders() {
         let container = document.getElementById("adminOrdersList");
         if(!container) return;
-        renderAdminStats();
-        if(orders.length === 0) { container.innerHTML = "<div style='text-align:center; padding:30px;'>📭 အော်ဒါမရှိသေးပါ</div>"; return; }
-        let html = "";
-        orders.forEach((order) => {
-            let statusClass = order.status === "pending" ? "status-pending" : (order.status === "confirmed" ? "status-confirmed" : (order.status === "completed" ? "status-completed" : "status-cancelled"));
-            let statusText = order.status === "pending" ? "⏳ ဆိုင်ရောက်လက်ခံရန်" : (order.status === "confirmed" ? "✅ အတည်ပြုပြီး" : (order.status === "completed" ? "✔️ ပြီးစီး" : "❌ ပယ်ဖျက်ထား"));
-            html += `
-                <div class="order-card">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
-                        <strong>📦 ${order.id}</strong>
-                        <span class="${statusClass}">${statusText}</span>
-                    </div>
-                    <div><small>📅 ${order.date}</small></div>
-                    <div>👤 ${order.customerName} | 📞 ${order.customerPhone}</div>
-                    <div>📍 ${order.customerAddress}</div>
-                    <div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div>
-                    <div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div>
-                    ${order.paymentScreenshot ? `<div><img src="${order.paymentScreenshot}" class="screenshot-img" alt="payment slip"></div>` : "<div>⏳ ငွေသွင်းပြေစာ မတင်ရသေး</div>"}
-                    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-                        ${order.status === "pending" ? `<button class="accept-order" data-id="${order.id}" style="background:#10b981; color:white; border:none; border-radius:30px; padding:8px 16px; cursor:pointer;"><i class="fas fa-check"></i> လက်ခံမည်</button>` : ""}
-                        ${order.status === "confirmed" ? `<button class="complete-order" data-id="${order.id}" style="background:#3b82f6; color:white; border:none; border-radius:30px; padding:8px 16px; cursor:pointer;"><i class="fas fa-truck"></i> ပြီးစီးကြောင်းသတ်မှတ်</button>` : ""}
-                        ${order.status !== "cancelled" ? `<button class="cancel-order" data-id="${order.id}" style="background:#ef4444; color:white; border:none; border-radius:30px; padding:8px 16px; cursor:pointer;"><i class="fas fa-times"></i> ပယ်ဖျက်မည်</button>` : ""}
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-        
-        document.querySelectorAll(".accept-order").forEach(btn => btn.addEventListener("click", () => {
-            let id = btn.getAttribute("data-id");
-            let order = orders.find(o => o.id === id);
-            if(order) { order.status = "confirmed"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${id} ကို လက်ခံပြီးပါပြီ`); }
-        }));
-        document.querySelectorAll(".complete-order").forEach(btn => btn.addEventListener("click", () => {
-            let id = btn.getAttribute("data-id");
-            let order = orders.find(o => o.id === id);
-            if(order) { order.status = "completed"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${id} ပြီးစီးပါပြီ`); }
-        }));
-        document.querySelectorAll(".cancel-order").forEach(btn => btn.addEventListener("click", () => {
-            let id = btn.getAttribute("data-id");
-            let order = orders.find(o => o.id === id);
-            if(order && confirm(`အော်ဒါ ${id} ကို ပယ်ဖျက်မှာလား?`)) { order.status = "cancelled"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${id} ကို ပယ်ဖျက်ပြီးပါပြီ`); }
-        }));
+        if(orders.length === 0) container.innerHTML = "<div style='text-align:center;padding:30px;'>📭 အော်ဒါမရှိသေးပါ</div>";
+        else container.innerHTML = orders.map(order => `<div class="order-card"><div><strong>📦 ${order.id}</strong> <span class="status-${order.status}">${order.status==="pending"?"⏳ ဆိုင်ရောက်လက်ခံရန်":order.status==="confirmed"?"✅ အတည်ပြုပြီး":order.status==="completed"?"✔️ ပြီးစီး":"❌ ပယ်ဖျက်ထား"}</span></div><div><small>${order.date}</small></div><div>👤 ${order.customerName} | 📞 ${order.customerPhone}</div><div>📍 ${order.customerAddress}</div><div>💰 ${order.total.toLocaleString()} ကျပ် (${order.paymentName})</div><div>🚚 ${order.deliveryCity} (ပို့ဆောင်ခ ${order.deliveryFee.toLocaleString()}ကျပ်)</div>${order.paymentScreenshot ? `<img src="${order.paymentScreenshot}" class="screenshot-img">` : ""}<div style="margin-top:12px; display:flex; gap:10px;">${order.status === "pending" ? `<button class="accept-order" data-id="${order.id}" style="background:#10b981; color:white; border:none; border-radius:30px; padding:8px 16px;">✅ လက်ခံမည်</button>` : ""}${order.status === "confirmed" ? `<button class="complete-order" data-id="${order.id}" style="background:#3b82f6; color:white; border:none; border-radius:30px; padding:8px 16px;">✔️ ပြီးစီးသတ်မှတ်</button>` : ""}${order.status !== "cancelled" ? `<button class="cancel-order" data-id="${order.id}" style="background:#ef4444; color:white; border:none; border-radius:30px; padding:8px 16px;">❌ ပယ်ဖျက်မည်</button>` : ""}</div></div>`).join("");
+        document.querySelectorAll(".accept-order").forEach(btn => btn.addEventListener("click", () => { let order = orders.find(o => o.id === btn.dataset.id); if(order) { order.status = "confirmed"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${order.id} လက်ခံပြီး`); } }));
+        document.querySelectorAll(".complete-order").forEach(btn => btn.addEventListener("click", () => { let order = orders.find(o => o.id === btn.dataset.id); if(order) { order.status = "completed"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${order.id} ပြီးစီး`); } }));
+        document.querySelectorAll(".cancel-order").forEach(btn => btn.addEventListener("click", () => { let order = orders.find(o => o.id === btn.dataset.id); if(order && confirm("ပယ်ဖျက်မှာလား?")) { order.status = "cancelled"; saveOrders(); renderAdminOrders(); showToast(`အော်ဒါ ${order.id} ပယ်ဖျက်ပြီး`); } }));
     }
-    
-    // Add delivery fee
-    document.getElementById("addDeliveryFeeBtn")?.addEventListener("click", () => {
-        let city = document.getElementById("newCityName")?.value.trim();
-        let fee = parseInt(document.getElementById("newCityFee")?.value);
-        if(city && fee && !isNaN(fee)) {
-            deliveryFees[city] = fee;
-            saveDeliveryFees();
-            renderDeliveryFeesList();
-            renderDeliveryCitySelect();
-            updateCartUI();
-            document.getElementById("newCityName").value = "";
-            document.getElementById("newCityFee").value = "";
-            showToast(`${city} ထည့်ပြီးပါပြီ`);
-        } else { alert("မြို့အမည်နဲ့ ပို့ဆောင်ခ မှန်မှန်ထည့်ပါ"); }
-    });
-    
-    // Add product
-    document.getElementById("addProductBtn")?.addEventListener("click", () => {
-        let name = document.getElementById("newProductName")?.value, cat = document.getElementById("newProductCategory")?.value, price = parseInt(document.getElementById("newProductPrice")?.value), icon = document.getElementById("newProductIcon")?.value || "fas fa-box";
-        if(name && cat && price) {
-            products.push({ id: nextId++, name, category: cat, price, imgIcon: icon });
-            saveProducts();
-            categories = [...new Set(products.map(p => p.category))];
-            renderCategories(); filterAndRender(); renderAdminOrders();
-            showToast("ပစ္စည်းအသစ်ထည့်ပြီး");
-            document.getElementById("newProductName").value = ""; document.getElementById("newProductCategory").value = ""; document.getElementById("newProductPrice").value = "";
-        } else alert("အချက်အလက်အပြည့်ဖြည့်ပါ");
-    });
-    
-    // Screenshot upload
-    document.getElementById("screenshotUploadArea")?.addEventListener("click", () => {
-        document.getElementById("orderScreenshot").click();
-    });
-    document.getElementById("orderScreenshot")?.addEventListener("change", (e) => {
-        let file = e.target.files[0];
-        if(file) {
-            let reader = new FileReader();
-            reader.onload = (ev) => {
-                orderScreenshotData = ev.target.result;
-                document.getElementById("screenshotPreview").innerHTML = `<div style="display:flex; align-items:center; gap:10px;"><img src="${orderScreenshotData}" style="height:60px; border-radius:12px;"> <button id="removeScreenshotBtn" style="background:#ef4444; color:white; border:none; border-radius:20px; padding:4px 12px;">ဖျက်မည်</button></div>`;
-                document.getElementById("removeScreenshotBtn")?.addEventListener("click", () => {
-                    orderScreenshotData = null;
-                    document.getElementById("screenshotPreview").innerHTML = "";
-                    document.getElementById("orderScreenshot").value = "";
-                });
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-    
+    function renderAdminProducts() {
+        let container = document.getElementById("adminProductsList");
+        container.innerHTML = `<div style="margin-bottom:15px;"><h4>📦 ပစ္စည်းစာရင်း</h4></div>${products.map(p => `<div style="background:#f8fafc; padding:12px; border-radius:16px; margin-bottom:10px;"><div style="display:flex; justify-content:space-between; align-items:center;"><div><strong>${p.name}</strong><br><small>${p.category} | Base: ${p.basePrice.toLocaleString()}ကျပ်</small><br><small>Brands: ${p.brands.map(b=>b.name).join(", ")}</small></div><div><button class="edit-product" data-id="${p.id}" style="background:#f59e0b; border:none; border-radius:20px; padding:5px 12px;">✏️ ပြင်</button> <button class="delete-product" data-id="${p.id}" style="background:#ef4444; border:none; border-radius:20px; padding:5px 12px; color:white;">🗑️ ဖျက်</button></div></div></div>`).join("")}<div style="margin-top:20px;"><h4>➕ ပစ္စည်းအသစ်ထည့်ရန်</h4><input type="text" id="newProductName" placeholder="ပစ္စည်းအမည်" style="width:100%; padding:10px; margin:5px 0; border-radius:28px;"><input type="text" id="newProductCategory" placeholder="အမျိုးအစား" style="width:100%; padding:10px; margin:5px 0; border-radius:28px;"><input type="number" id="newProductPrice" placeholder="ဈေးနှုန်း" style="width:100%; padding:10px; margin:5px 0; border-radius:28px;"><input type="text" id="newProductIcon" placeholder="Icon class (fas fa-cube)" style="width:100%; padding:10px; margin:5px 0; border-radius:28px;"><textarea id="newProductBrands" placeholder="Brands (ဥပမာ: Crown,12500|Max,12800)" style="width:100%; padding:10px; margin:5px 0; border-radius:20px;" rows="2"></textarea><button id="addProductBtn" class="btn-primary" style="margin-top:10px;">ပစ္စည်းအသစ်ထည့်မည်</button></div>`;
+        document.querySelectorAll(".edit-product").forEach(btn => btn.addEventListener("click", () => { let p = products.find(p => p.id === parseInt(btn.dataset.id)); if(p) { let newBase = prompt("ဈေးနှုန်းအသစ်:", p.basePrice); if(newBase) p.basePrice = parseInt(newBase); saveProducts(); renderAdminProducts(); filterAndRender(); showToast("ပြင်ပြီးပါပြီ"); } }));
+        document.querySelectorAll(".delete-product").forEach(btn => btn.addEventListener("click", () => { if(confirm("ဖျက်မှာလား?")) { products = products.filter(p => p.id !== parseInt(btn.dataset.id)); saveProducts(); categories = [...new Set(products.map(p => p.category))]; renderCategories(); filterAndRender(); renderAdminProducts(); showToast("ဖျက်ပြီးပါပြီ"); } }));
+        document.getElementById("addProductBtn")?.addEventListener("click", () => {
+            let name = document.getElementById("newProductName")?.value, cat = document.getElementById("newProductCategory")?.value, price = parseInt(document.getElementById("newProductPrice")?.value), icon = document.getElementById("newProductIcon")?.value || "fas fa-box", brandsText = document.getElementById("newProductBrands")?.value;
+            if(name && cat && price) {
+                let brands = [{ name: "စံ", price: price }];
+                if(brandsText) { brands = brandsText.split("|").map(b => { let parts = b.split(","); return { name: parts[0], price: parseInt(parts[1]) || price }; }); }
+                products.push({ id: nextId++, name, category: cat, basePrice: price, imgIcon: icon, description: "ပစ္စည်းအသစ်", brands });
+                saveProducts(); categories = [...new Set(products.map(p => p.category))]; renderCategories(); filterAndRender(); renderAdminProducts();
+                showToast("ပစ္စည်းအသစ်ထည့်ပြီး");
+                document.getElementById("newProductName").value = ""; document.getElementById("newProductCategory").value = ""; document.getElementById("newProductPrice").value = ""; document.getElementById("newProductBrands").value = "";
+            } else alert("အချက်အလက်အပြည့်ဖြည့်ပါ");
+        });
+    }
+    function renderAdminDelivery() {
+        let container = document.getElementById("adminDeliveryList");
+        container.innerHTML = `<div><h4>📦 ပို့ဆောင်ခ သတ်မှတ်ချက်များ</h4>${Object.entries(deliveryFees).map(([city, fee]) => `<div class="delivery-fee-item"><span>${city}</span><span>${fee.toLocaleString()} ကျပ်</span><div><button class="edit-fee" data-city="${city}" style="background:#f59e0b; border:none; border-radius:20px; padding:4px 12px;">ပြင်</button><button class="delete-fee" data-city="${city}" style="background:#ef4444; border:none; border-radius:20px; padding:4px 12px; color:white;">ဖျက်</button></div></div>`).join("")}<div style="margin-top:15px; display:flex; gap:10px;"><input type="text" id="newCityName" placeholder="မြို့အမည်" style="flex:1; padding:10px; border-radius:28px;"><input type="number" id="newCityFee" placeholder="ပို့ဆောင်ခ" style="width:120px; padding:10px; border-radius:28px;"><button id="addDeliveryFeeBtn" style="background:#1a472a; color:white; border:none; border-radius:40px; padding:0 20px;">+ ထည့်</button></div></div>`;
+        document.querySelectorAll(".edit-fee").forEach(btn => btn.addEventListener("click", () => { let city = btn.dataset.city; let newFee = prompt(`${city} အတွက် ပို့ဆောင်ခ အသစ်:`, deliveryFees[city]); if(newFee && !isNaN(newFee)) { deliveryFees[city] = parseInt(newFee); saveDeliveryFees(); renderAdminDelivery(); renderDeliveryCitySelect(); updateCartUI(); showToast("ပြင်ပြီးပါပြီ"); } }));
+        document.querySelectorAll(".delete-fee").forEach(btn => btn.addEventListener("click", () => { let city = btn.dataset.city; if(Object.keys(deliveryFees).length > 1 && confirm("ဖျက်မှာလား?")) { delete deliveryFees[city]; saveDeliveryFees(); renderAdminDelivery(); renderDeliveryCitySelect(); updateCartUI(); showToast("ဖျက်ပြီးပါပြီ"); } }));
+        document.getElementById("addDeliveryFeeBtn")?.addEventListener("click", () => { let city = document.getElementById("newCityName")?.value.trim(), fee = parseInt(document.getElementById("newCityFee")?.value); if(city && fee && !isNaN(fee)) { deliveryFees[city] = fee; saveDeliveryFees(); renderAdminDelivery(); renderDeliveryCitySelect(); updateCartUI(); document.getElementById("newCityName").value = ""; document.getElementById("newCityFee").value = ""; showToast(`${city} ထည့်ပြီး`); } else alert("မြို့အမည်နဲ့ ပို့ဆောင်ခ ထည့်ပါ"); });
+    }
+    function renderAdminUsers() {
+        document.getElementById("adminUsersList").innerHTML = `<div><h4>👥 အသုံးပြုသူများ</h4>${customers.map(c => `<div class="delivery-fee-item"><span><i class="fas fa-user"></i> ${c.name}</span><span>📞 ${c.phone}</span><span><small>${c.createdAt || ""}</small></span></div>`).join("") || "<div>အသုံးပြုသူမရှိသေး</div>"}</div>`;
+    }
+    let activeAdminTab = "dashboard";
+    function switchAdminTab(tab) {
+        activeAdminTab = tab;
+        document.querySelectorAll(".admin-tab").forEach(t => t.classList.remove("active"));
+        document.querySelector(`.admin-tab[data-tab="${tab}"]`).classList.add("active");
+        document.getElementById("adminDashboard").style.display = tab === "dashboard" ? "block" : "none";
+        document.getElementById("adminOrdersList").style.display = tab === "orders" ? "block" : "none";
+        document.getElementById("adminProductsList").style.display = tab === "products" ? "block" : "none";
+        document.getElementById("adminDeliveryList").style.display = tab === "delivery" ? "block" : "none";
+        document.getElementById("adminUsersList").style.display = tab === "users" ? "block" : "none";
+        if(tab === "dashboard") renderAdminDashboard();
+        if(tab === "orders") renderAdminOrders();
+        if(tab === "products") renderAdminProducts();
+        if(tab === "delivery") renderAdminDelivery();
+        if(tab === "users") renderAdminUsers();
+    }
+    document.getElementById("screenshotUploadArea")?.addEventListener("click", () => document.getElementById("orderScreenshot").click());
+    document.getElementById("orderScreenshot")?.addEventListener("change", (e) => { let file = e.target.files[0]; if(file) { let reader = new FileReader(); reader.onload = (ev) => { orderScreenshotData = ev.target.result; document.getElementById("screenshotPreview").innerHTML = `<img src="${orderScreenshotData}" style="height:60px; border-radius:12px;"> <button id="removeScreenshotBtn" style="background:#ef4444; border:none; border-radius:20px; padding:4px 12px;">ဖျက်</button>`; document.getElementById("removeScreenshotBtn")?.addEventListener("click", () => { orderScreenshotData = null; document.getElementById("screenshotPreview").innerHTML = ""; document.getElementById("orderScreenshot").value = ""; }); }; reader.readAsDataURL(file); } });
     document.getElementById("placeOrderBtn")?.addEventListener("click", placeOrder);
-    
-    // Admin with password
     let adminPassword = "banyar123";
-    document.getElementById("adminBtn")?.addEventListener("click", () => {
-        document.getElementById("adminPasswordModal").style.display = "flex";
-        document.getElementById("overlay").style.display = "block";
-    });
-    document.getElementById("adminPasswordSubmitBtn")?.addEventListener("click", () => {
-        let pwd = document.getElementById("adminPassword").value;
-        if(pwd === adminPassword) {
-            document.getElementById("adminPasswordModal").style.display = "none";
-            renderDeliveryFeesList();
-            renderAdminOrders();
-            document.getElementById("adminModal").style.display = "flex";
-        } else { alert("စကားဝှက် မှားနေပါသည်"); }
-    });
-    document.getElementById("closeAdminPasswordBtn")?.addEventListener("click", () => {
-        document.getElementById("adminPasswordModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    });
-    document.getElementById("closeAdminBtn")?.addEventListener("click", () => {
-        document.getElementById("adminModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    });
-    
-    // Event listeners
+    document.getElementById("adminBtn")?.addEventListener("click", () => { document.getElementById("adminPasswordModal").style.display = "flex"; document.getElementById("overlay").style.display = "block"; });
+    document.getElementById("adminPasswordSubmitBtn")?.addEventListener("click", () => { if(document.getElementById("adminPassword").value === adminPassword) { document.getElementById("adminPasswordModal").style.display = "none"; switchAdminTab("dashboard"); document.getElementById("adminModal").style.display = "flex"; } else alert("စကားဝှက် မှားနေပါသည်"); });
+    document.getElementById("closeAdminPasswordBtn")?.addEventListener("click", () => { document.getElementById("adminPasswordModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
+    document.getElementById("closeAdminBtn")?.addEventListener("click", () => { document.getElementById("adminModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
+    document.querySelectorAll(".admin-tab").forEach(tab => tab.addEventListener("click", () => switchAdminTab(tab.dataset.tab)));
     document.getElementById("searchBtn")?.addEventListener("click", () => { searchKeyword = document.getElementById("searchInput").value; filterAndRender(); });
     document.getElementById("searchInput")?.addEventListener("keyup", (e) => { if(e.key === "Enter") { searchKeyword = document.getElementById("searchInput").value; filterAndRender(); } });
     document.querySelectorAll(".sort-btn").forEach(btn => btn.addEventListener("click", () => { currentSort = btn.dataset.sort; document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active")); btn.classList.add("active"); filterAndRender(); }));
-    document.getElementById("cartIcon")?.addEventListener("click", () => { 
-        renderDeliveryCitySelect();
-        renderPaymentMethods();
-        document.getElementById("cartModal").classList.add("open"); 
-        document.getElementById("overlay").style.display = "block"; 
-        updateCartUI(); 
-    });
+    document.getElementById("cartIcon")?.addEventListener("click", () => { renderDeliveryCitySelect(); renderPaymentMethods(); document.getElementById("cartModal").classList.add("open"); document.getElementById("overlay").style.display = "block"; updateCartUI(); });
     document.getElementById("closeCartBtn")?.addEventListener("click", () => { document.getElementById("cartModal").classList.remove("open"); document.getElementById("overlay").style.display = "none"; });
-    document.getElementById("overlay")?.addEventListener("click", () => {
-        document.getElementById("cartModal").classList.remove("open");
-        document.getElementById("adminModal").style.display = "none";
-        document.getElementById("adminPasswordModal").style.display = "none";
-        document.getElementById("loginModal").style.display = "none";
-        document.getElementById("myOrdersModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    });
+    document.getElementById("overlay")?.addEventListener("click", () => { document.getElementById("cartModal").classList.remove("open"); document.getElementById("adminModal").style.display = "none"; document.getElementById("adminPasswordModal").style.display = "none"; document.getElementById("loginModal").style.display = "none"; document.getElementById("myOrdersModal").style.display = "none"; document.getElementById("productDetailModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
     document.getElementById("loginSubmitBtn")?.addEventListener("click", loginOrSignup);
-    document.getElementById("closeLoginBtn")?.addEventListener("click", () => {
-        document.getElementById("loginModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    });
-    document.getElementById("closeMyOrdersBtn")?.addEventListener("click", () => {
-        document.getElementById("myOrdersModal").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    });
-    
+    document.getElementById("closeLoginBtn")?.addEventListener("click", () => { document.getElementById("loginModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
+    document.getElementById("closeMyOrdersBtn")?.addEventListener("click", () => { document.getElementById("myOrdersModal").style.display = "none"; document.getElementById("overlay").style.display = "none"; });
     renderCategories(); filterAndRender(); updateCartUI(); updateUserUI();
     window.uploadScreenshot = uploadScreenshot;
 </script>
