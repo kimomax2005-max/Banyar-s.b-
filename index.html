@@ -393,10 +393,6 @@
         let grandTotal = total + deliveryFee - discount;
         let orderId = "BANYAR" + Date.now();
         
-        let paymentMsg = selectedPayment.phone ? 
-            `\n📱 ငွေသွင်းရန်: ${selectedPayment.name} - ${selectedPayment.phone}\n👉 ဖုန်းနံပါတ်ကို နှိပ်ပြီး Copy ယူနိုင်ပါတယ်။` : 
-            `\n💳 ငွေပေးချေမှု: ${selectedPayment.name}`;
-        
         let newOrder = {
             id: orderId, date: new Date().toLocaleString(), customerName: name, customerPhone: phone, customerAddress: address,
             deliveryCity: deliveryCity, deliveryFee: deliveryFee, note: document.getElementById("orderNote")?.value || "",
@@ -408,7 +404,7 @@
         orders.unshift(newOrder);
         saveOrders();
         
-        let msg = `**ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင်**\n\n📦 အော်ဒါနံပါတ်: ${orderId}\n💰 စုစုပေါင်းငွေ: ${grandTotal.toLocaleString()} ကျပ်\n🚚 ပို့ဆောင်မည့်နေရာ: ${deliveryCity}\n${paymentMsg}\n\n⚠️ ငွေသွင်းပြီးပါက Admin မှ အတည်ပြုပေးပါမည်။`;
+        let msg = `**ဗညား(s.b) အိမ်ဆောက်ပစ္စည်းဆိုင်**\n\n📦 အော်ဒါနံပါတ်: ${orderId}\n💰 စုစုပေါင်းငွေ: ${grandTotal.toLocaleString()} ကျပ်\n🚚 ပို့ဆောင်မည့်နေရာ: ${deliveryCity}\n📱 ငွေသွင်းရန်: ${selectedPayment.name} ${selectedPayment.phone ? `- ${selectedPayment.phone}` : ""}\n\n⚠️ ငွေသွင်းပြီးပါက Admin မှ အတည်ပြုပေးပါမည်။`;
         alert(`✅ အော်ဒါအောင်မြင်ပါသည်။\n\n${msg}`);
         if(selectedPayment.phone) copyPhone(selectedPayment.phone);
         
